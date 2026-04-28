@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>一般社団法人WCO — World Citizen Organization</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet">
+  <link href="https://indestructibletype-fonthosting.github.io/renner.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Kosugi", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+      color: #333;
+      background: #4ab134;
+      line-height: 1.66;
+      overflow-x: hidden;
+      font-feature-settings: "palt";
+    }
+
+    a, img, button, #hamburger span { transition: .3s; }
+    a { color: #333; text-decoration: none; }
+
+    /* ── HEADER ── */
+    #main-header {
+      width: 100%;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 85;
+      padding: 2rem 3.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: .3s;
+    }
+
+    #main-header.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    #header-logo {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-weight: 800;
+      font-size: 2.4rem;
+      color: #fff;
+      letter-spacing: .12em;
+    }
+
+    #main-header.scrolled #header-logo { color: #4ab134; }
+
+    #hamburger {
+      width: 3.2rem;
+      height: 2.2rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    #main-header.scrolled #hamburger span { background: #4ab134; }
+    #hamburger:hover { opacity: .7; }
+
+    /* ── SIDE NAV ── */
+    #side-navigation {
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      position: fixed;
+      top: 0; right: -300px;
+      z-index: 90;
+      filter: drop-shadow(-2px 0 5px rgba(17,17,17,0.1));
+      transition: .3s;
+    }
+
+    #side-navigation.nav-open { right: 0; }
+
+    #close-btn {
+      position: absolute;
+      top: 2.4rem; left: 2rem;
+      width: 3rem; height: 3rem;
+      cursor: pointer;
+    }
+
+    #close-btn span {
+      display: block;
+      width: 3rem; height: 3px;
+      background: #4ab134;
+      border-radius: 2px;
+      position: absolute;
+      top: 50%;
+    }
+
+    #close-btn span:first-child { transform: rotate(45deg); }
+    #close-btn span:last-child  { transform: rotate(-45deg); }
+
+    #top-menu { padding: 8rem 2rem 3rem; list-style: none; }
+    #top-menu li { margin-bottom: 1.8rem; }
+
+    #top-menu a {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #4ab134;
+      letter-spacing: .1em;
+      display: block;
+      padding: .4rem 0;
+    }
+
+    #top-menu a span {
+      display: block;
+      font-family: "Kosugi", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #999;
+    }
+
+    #top-menu a:hover { opacity: .7; }
+
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 89;
+    }
+
+    .nav-overlay.active { display: block; }
+
+    /* ── HERO ── */
+    #sec-hero {
+      min-height: 100vh;
+      background: #4ab134;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12rem 2.4rem 6rem;
+      position: relative;
+      overflow: hidden;
+      gap: 5rem;
+    }
+
+    .hero-layout { position: relative; z-index: 1; }
+
+    .hero-tagline {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: .28em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-en {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3.6rem, 5vw, 6.4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: .1em;
+      margin-bottom: 2rem;
+      white-space: nowrap;
+    }
+
+    /* 写真コラージュ — 横並びファン */
+    .hero-photos {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 14px;
+      width: 100%;
+      max-width: 1000px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-photo {
+      flex: 1;
+      max-width: 185px;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+      transition: transform .4s ease, box-shadow .4s ease;
+      position: relative;
+    }
+
+    .hero-photo:nth-child(1) { transform: rotate(-6deg) translateY(28px); }
+    .hero-photo:nth-child(2) { transform: rotate(-3.5deg) translateY(14px); }
+    .hero-photo:nth-child(3) { transform: rotate(-1deg) translateY(4px); }
+    .hero-photo:nth-child(4) { transform: rotate(1deg) translateY(4px); }
+    .hero-photo:nth-child(5) { transform: rotate(3.5deg) translateY(14px); }
+    .hero-photo:nth-child(6) { transform: rotate(6deg) translateY(28px); }
+
+    .hero-photo:hover {
+      transform: rotate(0) translateY(-12px) scale(1.05);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      z-index: 10;
+    }
+
+    .hero-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* 写真クレジット */
+    .photo-credit {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: .08em;
+      position: relative; z-index: 1;
+    }
+
+    .photo-credit a { color: rgba(255,255,255,0.28); }
+    .photo-credit a:hover { color: rgba(255,255,255,0.55); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.4rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      color: rgba(255,255,255,0.4);
+      font-family: "Renner*", sans-serif;
+      font-size: 1rem;
+      letter-spacing: .3em;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 36px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── SECTION 共通 ── */
+    .section-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 2.4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section { padding-bottom: 10rem; position: relative; }
+
+    /* GLFFスタイルの大見出し */
+    .sec-heading {
+      font-size: 9.2rem;
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-weight: 800;
+      color: #4ab134;
+      letter-spacing: .5rem;
+      line-height: 1.2;
+      position: absolute;
+      top: 0; left: 2rem;
+    }
+
+    .sec-heading-sub {
+      display: block;
+      padding-left: 3rem;
+      font-family: "Kosugi", sans-serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: #333;
+    }
+
+    .sec-inner { padding-top: 12rem; }
+
+    .sec-tag {
+      display: inline-block;
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: #4ab134;
+      border-bottom: 2px solid #4ab134;
+      padding-bottom: .4rem;
+      margin-bottom: 2.4rem;
+    }
+
+    /* ── MISSION ── */
+    #sec-mission { background: #fff; }
+
+    .mission-block { text-align: center; margin-bottom: 5rem; }
+
+    .mission-text {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      font-weight: 800;
+      color: #4ab134;
+      letter-spacing: .1em;
+      line-height: 1.4;
+    }
+
+    .mission-divider {
+      width: 40px; height: 3px;
+      background: #EBEBEC;
+      margin: 4rem auto;
+    }
+
+    .vision-text {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #333;
+      letter-spacing: .08em;
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    #sec-about { background: #e6f7e3; }
+
+    .about-lead {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #4ab134;
+      line-height: 1.7;
+      letter-spacing: .06em;
+      margin-bottom: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: solid 3px #EBEBEC;
+    }
+
+    .about-block {
+      margin-bottom: 2.8rem;
+      padding-left: 1.8rem;
+      border-left: solid 4px #4ab134;
+    }
+
+    .about-body {
+      font-size: 1.6rem;
+      color: #555;
+      line-height: 2;
+      letter-spacing: .06em;
+    }
+
+    .about-keywords {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: dashed 1px #dedee0;
+    }
+
+    .about-keyword {
+      display: inline-block;
+      padding: .5rem 1.6rem;
+      border: solid 1px #4ab134;
+      border-radius: 30px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #4ab134;
+      letter-spacing: .1em;
+    }
+
+    /* ── VALUES ── */
+    #sec-values { background: #fff; }
+
+    .values-list {
+      list-style: none;
+      border-top: solid 3px #EBEBEC;
+      border-bottom: solid 3px #EBEBEC;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: baseline;
+      gap: 2.4rem;
+      padding: 2.6rem 0;
+      border-bottom: dashed 1px #dedee0;
+    }
+
+    .value-item:last-child { border-bottom: none; }
+
+    .value-num {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #4ab134;
+      opacity: .35;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 3.6rem;
+    }
+
+    .value-text {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #333;
+      letter-spacing: .08em;
+      line-height: 1.5;
+    }
+
+    /* ── GLFF ── */
+    #sec-glff { background: #fff; }
+
+    .glff-intro {
+      font-size: 1.6rem;
+      color: #666;
+      line-height: 1.9;
+      letter-spacing: .1em;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .glff-intro strong { color: #4ab134; font-weight: 800; }
+
+    .glff-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      padding: 3rem;
+      background: #e6f7e3;
+      margin-bottom: 5rem;
+      flex-wrap: wrap;
+    }
+
+    .count-item { text-align: center; }
+
+    .count-num {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 6rem;
+      font-weight: 800;
+      color: #4ab134;
+      line-height: 1;
+    }
+
+    .count-label {
+      font-size: 1.3rem;
+      color: #666;
+      letter-spacing: .1em;
+      margin-top: .6rem;
+    }
+
+    .count-divider { width: 1px; height: 60px; background: #EBEBEC; }
+
+    .events-title {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: #4ab134;
+      text-align: center;
+      margin-bottom: 2.4rem;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .event-card {
+      background: #fff;
+      padding: 2.4rem;
+      position: relative;
+      filter: drop-shadow(0 2px 5px rgba(17,17,17,0.05));
+      transition: .3s;
+    }
+
+    .event-card:hover {
+      filter: drop-shadow(0 4px 12px rgba(17,17,17,0.1));
+      transform: translateY(-3px);
+    }
+
+    .event-cat {
+      display: inline-block;
+      padding: .4rem 1.8rem;
+      background: #4ab134;
+      font-size: 1.2rem;
+      color: #fff;
+      letter-spacing: .3rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .event-cat::after {
+      content: '';
+      width: 0; height: 0;
+      border-width: 12px 8px 12px 0;
+      border-color: transparent #fff transparent transparent;
+      border-style: solid;
+      position: absolute;
+      top: 0; right: 0;
+    }
+
+    .event-cat.overseas { background: #DB7B00; }
+
+    .event-date {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #4ab134;
+      letter-spacing: .15em;
+      margin-bottom: .6rem;
+    }
+
+    .event-name {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #333;
+      font-family: "Renner*", "Kosugi", sans-serif;
+      letter-spacing: .12em;
+    }
+
+    .glff-link { text-align: center; margin-top: 4rem; }
+
+    /* ── JOIN ── */
+    #sec-join { background: #4ab134; }
+
+    #sec-join .sec-heading { color: rgba(255,255,255,0.18); }
+    #sec-join .sec-heading-sub { color: rgba(255,255,255,0.9); }
+
+    .join-title {
+      font-size: clamp(3.2rem, 5vw, 5.6rem);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .1em;
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .join-sub {
+      font-size: 1.6rem;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: .08em;
+      line-height: 1.9;
+      margin-bottom: 4rem;
+    }
+
+    .join-types {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .join-type {
+      flex: 1;
+      min-width: 200px;
+      border: solid 1px rgba(255,255,255,0.4);
+      padding: 2.4rem;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .join-type-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .1em;
+      margin-bottom: .8rem;
+    }
+
+    .join-type-desc {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: .05em;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-link {
+      display: inline-block;
+      width: 300px;
+      padding: 1rem;
+      border: solid 1px #4ab134;
+      border-radius: 25px;
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #4ab134;
+      letter-spacing: .1em;
+      text-align: center;
+      position: relative;
+      transition: .3s;
+    }
+
+    .btn-link::after {
+      content: '';
+      display: inline-block;
+      width: 9px; height: 9px;
+      border-right: solid 2px #4ab134;
+      border-bottom: solid 2px #4ab134;
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 50%; right: 2rem;
+      margin-top: -5px;
+      transition: .3s;
+    }
+
+    .btn-link:hover { background: #4ab134; color: #fff; }
+    .btn-link:hover::after { border-color: #fff; right: 1.5rem; }
+
+    .btn-white { border-color: #fff; color: #fff; }
+    .btn-white::after { border-color: #fff; }
+    .btn-white:hover { background: #fff; color: #4ab134; }
+    .btn-white:hover::after { border-color: #4ab134; right: 1.5rem; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #fff;
+      color: #4ab134;
+      position: relative;
+      z-index: 20;
+    }
+
+    .site-footer .wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 2.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo-text {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #4ab134;
+      letter-spacing: .1em;
+      display: block;
+    }
+
+    .footer-logo-sub {
+      font-size: 1.2rem;
+      color: #999;
+      letter-spacing: .04em;
+      line-height: 1.8;
+      margin-top: .6rem;
+    }
+
+    .footer-nav-list { list-style: none; }
+    .footer-nav-list li { margin-bottom: .8rem; }
+
+    .footer-nav-list a {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #4ab134;
+      letter-spacing: .15em;
+    }
+
+    .footer-nav-list a:hover { opacity: .7; }
+
+    .footer-bottom {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem 2.4rem;
+      border-top: solid 1px #EBEBEC;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .copy {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #bbb;
+      letter-spacing: .12em;
+    }
+
+    .footer-sns { display: flex; gap: .8rem; }
+
+    .footer-sns a {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: solid 1px #EBEBEC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-sns svg { width: 18px; height: 18px; fill: #4ab134; transition: .3s; }
+    .footer-sns a:hover { background: #4ab134; }
+    .footer-sns a:hover svg { fill: #fff; }
+
+
+    /* ── SCROLL ANIMATION ── */
+    .elm-fadeup {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s;
+    }
+
+    .fadein-up { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media screen and (max-width: 798px) {
+      #main-header { padding: 1.6rem 2rem; }
+      #sec-hero { padding: 10rem 2rem 5rem; gap: 3rem; }
+      .hero-title { font-size: 4rem; }
+      .hero-photos { gap: 6px; }
+      .hero-photo { max-width: 110px; }
+      .hero-photo:nth-child(1) { transform: rotate(-5deg) translateY(20px); }
+      .hero-photo:nth-child(2) { transform: rotate(-3deg) translateY(10px); }
+      .hero-photo:nth-child(3) { transform: rotate(-1deg) translateY(4px); }
+      .hero-photo:nth-child(4) { transform: rotate(1deg) translateY(4px); }
+      .hero-photo:nth-child(5) { transform: rotate(3deg) translateY(10px); }
+      .hero-photo:nth-child(6) { transform: rotate(5deg) translateY(20px); }
+      .sec-heading { font-size: 3.2rem; position: static; padding: 3rem 0 0 2rem; letter-spacing: .2rem; }
+      .sec-heading-sub { font-size: 1.6rem; padding-left: 2rem; }
+      .sec-inner { padding-top: 2rem; }
+      .event-grid { grid-template-columns: 1fr; }
+      .join-types { flex-direction: column; }
+      .site-footer .wrap { flex-direction: column; }
+      .glff-count { gap: 2rem; }
+      .count-divider { display: none; }
+      .btn-link { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header id="main-header">
+  <a href="#" id="header-logo">WCO</a>
+  <div id="hamburger" onclick="openNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ── SIDE NAV ── -->
+<div class="nav-overlay" id="nav-overlay" onclick="closeNav()"></div>
+<nav id="side-navigation">
+  <div id="close-btn" onclick="closeNav()">
+    <span></span><span></span>
+  </div>
+  <ul id="top-menu">
+    <li><a href="#sec-mission" onclick="closeNav()">Mission<span>ミッション・ビジョン</span></a></li>
+    <li><a href="#sec-about"   onclick="closeNav()">About<span>WCOについて</span></a></li>
+    <li><a href="#sec-values"  onclick="closeNav()">Values<span>大切にしていること</span></a></li>
+    <li><a href="#sec-glff"   onclick="closeNav()">GLFF<span>Green Life Food Festa</span></a></li>
+    <li><a href="#sec-join"   onclick="closeNav()">Join<span>会員について</span></a></li>
+    <li><a href="#"           onclick="closeNav()">Contact<span>お問い合わせ</span></a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="sec-hero">
+
+  <!-- テキスト -->
+  <div class="hero-layout">
+    <p class="hero-tagline elm-fadeup">一般社団法人 WCO</p>
+    <p class="hero-en elm-fadeup">World Citizen Organization</p>
+    <h1 class="hero-title elm-fadeup">地球を美しく生きる</h1>
+    <div class="elm-fadeup">
+      <a href="#sec-mission" class="btn-link btn-white">WCOについて</a>
+    </div>
+  </div>
+
+  <!-- 写真ファン -->
+  <div class="hero-photos elm-fadeup">
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=500&q=80" alt="土と手 — 自然農法" loading="eager">
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1630532831995-e7cc8329b56d?auto=format&fit=crop&w=500&q=80" alt="京都で着物を楽しむ人々" loading="eager">
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=500&q=80" alt="国際的な友人たちの交流" loading="eager">
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1701834951900-b31c99da66f8?auto=format&fit=crop&w=500&q=80" alt="仲間たちとの時間" loading="eager">
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=500&q=80" alt="芽吹く緑 — 秀明自然農法" loading="eager">
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1758270705902-f50dde4add9f?auto=format&fit=crop&w=500&q=80" alt="多様な若者たちの交流" loading="eager">
+    </div>
+  </div>
+
+  <p class="photo-credit">Photos: <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ── MISSION ── -->
+<section id="sec-mission">
+  <h3 class="sec-heading">Mission<span class="sec-heading-sub">ミッション・ビジョン</span></h3>
+  <div class="section-wrap">
+    <div class="sec-inner">
+
+      <div class="mission-block elm-fadeup">
+        <span class="sec-tag">Mission ｜ 私たちの使命</span>
+        <p class="mission-text">地球を美しく生きる<br>人を増やす</p>
+      </div>
+
+      <div class="mission-divider"></div>
+
+      <div class="mission-block elm-fadeup">
+        <span class="sec-tag">Vision ｜ 目指す未来</span>
+        <p class="vision-text">世界人としての生き方を提案し、<br>自分らしさが世界を幸せにする循環を</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="sec-about">
+  <h3 class="sec-heading">About<span class="sec-heading-sub">WCOについて</span></h3>
+  <div class="section-wrap">
+    <div class="sec-inner">
+
+      <p class="about-lead elm-fadeup">
+        WCOは、「世界的視野」と「個人の包括的な幸せ（Well-being）」を両立させるため、若者が中心となり世代・業界・国境を超えて共創を目指します。
+      </p>
+
+      <div class="about-block elm-fadeup">
+        <p class="about-body">
+          現在、多くの人が「自分自身の幸せ」と「社会や地球の課題」を切り離して考えてしまいがちです。しかし、一人ひとりが自らの心身を整え、心地よい人間関係を築くという「内側の充実」は、必ず「外側（世界）」へのポジティブな行動へと繋がります。
+        </p>
+      </div>
+
+      <div class="about-block elm-fadeup">
+        <p class="about-body">
+          個人の独自のポリシー（生き方）が尊重され、それが地球環境や他者への貢献と地続きになることで、はじめて真の持続可能性が生まれると私たちは信じています。
+        </p>
+      </div>
+
+      <div class="about-block elm-fadeup">
+        <p class="about-body">
+          私たちは、この地球で誰もが自分らしく輝ける生き方を、若者が中心となって企業、自治体、そして世界中の多様なステークホルダーと連携し、新たな価値を共創する活動を全力でサポートします。
+        </p>
+      </div>
+
+      <div class="about-keywords elm-fadeup">
+        <span class="about-keyword">世界的視野</span>
+        <span class="about-keyword">Well-being</span>
+        <span class="about-keyword">若者主体</span>
+        <span class="about-keyword">世代を超えた共創</span>
+        <span class="about-keyword">持続可能性</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section id="sec-values">
+  <h3 class="sec-heading">Values<span class="sec-heading-sub">大切にしていること</span></h3>
+  <div class="section-wrap">
+    <div class="sec-inner">
+      <ul class="values-list">
+        <li class="value-item elm-fadeup">
+          <span class="value-num">1</span>
+          <span class="value-text">世界を、自分ごとに生きる</span>
+        </li>
+        <li class="value-item elm-fadeup">
+          <span class="value-num">2</span>
+          <span class="value-text">本物の出会いが、人を変える</span>
+        </li>
+        <li class="value-item elm-fadeup">
+          <span class="value-num">3</span>
+          <span class="value-text">食べることは、地球を生きること</span>
+        </li>
+        <li class="value-item elm-fadeup">
+          <span class="value-num">4</span>
+          <span class="value-text">美を求める心が、道を照らす</span>
+        </li>
+        <li class="value-item elm-fadeup">
+          <span class="value-num">5</span>
+          <span class="value-text">青年が変われば、社会が変わる</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── GLFF ── -->
+<section id="sec-glff">
+  <h3 class="sec-heading">GLFF<span class="sec-heading-sub">Green Life Food Festa</span></h3>
+  <div class="section-wrap">
+    <div class="sec-inner">
+
+      <p class="glff-intro elm-fadeup">
+        オーガニック＆ナチュラルマルシェとワークショップを通じて<br>
+        <strong>「地球を美しく生きる」</strong>を体感できる場をつくる、<br>
+        WCOの主要イベントです。
+      </p>
+
+      <div class="glff-count elm-fadeup">
+        <div class="count-item">
+          <div class="count-num">11</div>
+          <div class="count-label">開催実績</div>
+        </div>
+        <div class="count-divider"></div>
+        <div class="count-item">
+          <div class="count-num">7</div>
+          <div class="count-label">開催都市</div>
+        </div>
+        <div class="count-divider"></div>
+        <div class="count-item">
+          <div class="count-num">2018</div>
+          <div class="count-label">活動開始</div>
+        </div>
+      </div>
+
+      <p class="events-title elm-fadeup">2026年度 開催予定</p>
+      <div class="event-grid">
+        <div class="event-card elm-fadeup">
+          <div class="event-cat">予定</div>
+          <div class="event-date">2026.10.11</div>
+          <div class="event-name">神戸</div>
+        </div>
+        <div class="event-card elm-fadeup">
+          <div class="event-cat">予定</div>
+          <div class="event-date">2026.10.12</div>
+          <div class="event-name">金沢</div>
+        </div>
+        <div class="event-card elm-fadeup">
+          <div class="event-cat">予定</div>
+          <div class="event-date">2026.10.25</div>
+          <div class="event-name">奈良</div>
+        </div>
+        <div class="event-card elm-fadeup">
+          <div class="event-cat overseas">海外初</div>
+          <div class="event-date">2026 秋</div>
+          <div class="event-name">台湾</div>
+        </div>
+      </div>
+
+      <div class="glff-link elm-fadeup">
+        <a href="https://greenlifefoodfesta.com" class="btn-link" target="_blank">GLFFサイトへ</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── JOIN ── -->
+<section id="sec-join">
+  <h3 class="sec-heading">Join<span class="sec-heading-sub">会員について</span></h3>
+  <div class="section-wrap">
+    <div class="sec-inner">
+
+      <h2 class="join-title elm-fadeup">共に、地球を<br>美しく生きよう</h2>
+      <p class="join-sub elm-fadeup">
+        WCOでは正会員・賛助会員を募集しています。<br>
+        理念に共感する方のご参加をお待ちしています。
+      </p>
+
+      <div class="join-types elm-fadeup">
+        <div class="join-type">
+          <div class="join-type-name">正会員</div>
+          <div class="join-type-desc">活動に主体的に参加する会員</div>
+        </div>
+        <div class="join-type">
+          <div class="join-type-name">賛助会員</div>
+          <div class="join-type-desc">活動をサポートする会員</div>
+        </div>
+      </div>
+
+      <div class="elm-fadeup" style="text-align:center;">
+        <a href="#" class="btn-link btn-white">お問い合わせ・入会申込</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <span class="footer-logo-text">WCO</span>
+      <p class="footer-logo-sub">
+        一般社団法人 World Citizen Organization<br>
+        地球を美しく生きる人を増やす
+      </p>
+    </div>
+    <nav>
+      <ul class="footer-nav-list">
+        <li><a href="#sec-mission">Mission</a></li>
+        <li><a href="#sec-values">Values</a></li>
+        <li><a href="#sec-glff">GLFF</a></li>
+        <li><a href="#sec-join">Join</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <p class="copy">© 2026 一般社団法人WCO All rights reserved.</p>
+    <div class="footer-sns">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="#" aria-label="X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openNav() {
+    document.getElementById('side-navigation').classList.add('nav-open');
+    document.getElementById('nav-overlay').classList.add('active');
+  }
+  function closeNav() {
+    document.getElementById('side-navigation').classList.remove('nav-open');
+    document.getElementById('nav-overlay').classList.remove('active');
+  }
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('fadein-up'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.elm-fadeup').forEach(el => observer.observe(el));
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#sec-hero .elm-fadeup').forEach((el, i) => {
+      setTimeout(() => el.classList.add('fadein-up'), 300 + i * 200);
+    });
+  });
+
+  // ── 葉っぱアニメーション (Web Animations API + サイン波 28ステップ) ──
+  (function () {
+    const hero = document.getElementById('sec-hero');
+
+    const colors = [
+      'rgba(74,177,52,0.76)',  'rgba(100,196,68,0.68)',
+      'rgba(48,130,32,0.72)',  'rgba(158,218,128,0.62)',
+      'rgba(194,228,84,0.64)', 'rgba(128,196,70,0.70)',
+      'rgba(78,158,46,0.68)',
+    ];
+
+    const leafPaths = [
+      'M0,-14 C7,-10 9,-3 6,2 C3,7 -3,7 -6,2 C-9,-3 -7,-10 0,-14 Z',
+      'M0,-16 C8,-12 10,-4 6,3 L0,5 L-6,3 C-10,-4 -8,-12 0,-16 Z',
+      'M2,-13 C9,-9 10,-1 5,5 C0,9 -7,7 -9,0 C-7,-9 -4,-13 2,-13 Z',
+      'M0,-15 C6,-12 9,-5 7,1 C5,7 -1,10 -5,5 C-9,0 -7,-8 -3,-13 Z',
+    ];
+
+    function makeSVG(color, pathD, size) {
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', size * 2);
+      svg.setAttribute('height', size * 2.6);
+      svg.setAttribute('viewBox', '-12 -18 24 28');
+      svg.style.cssText = 'overflow:visible;display:block;';
+
+      const stem = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      stem.setAttribute('x1','0'); stem.setAttribute('y1','-13');
+      stem.setAttribute('x2','0'); stem.setAttribute('y2','5');
+      stem.setAttribute('stroke', color);
+      stem.setAttribute('stroke-width','1.5');
+      stem.setAttribute('stroke-linecap','round');
+
+      const leaf = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      leaf.setAttribute('d', pathD);
+      leaf.setAttribute('fill', color);
+
+      svg.appendChild(stem);
+      svg.appendChild(leaf);
+      return svg;
+    }
+
+    function spawn() {
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const pathD = leafPaths[Math.floor(Math.random() * leafPaths.length)];
+      const size  = Math.random() * 12 + 9;
+
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;z-index:0;';
+
+      const svg = makeSVG(color, pathD, size);
+      wrap.appendChild(svg);
+      hero.appendChild(wrap);
+
+      const heroW   = hero.offsetWidth;
+      const heroH   = hero.offsetHeight;
+      const startX  = Math.random() * (heroW + 80) - 40;
+      const dur     = Math.random() * 5000 + 9000;   // 9〜14秒
+      const swAmp   = Math.random() * 90 + 45;       // 横揺れ幅
+      const swFreq  = Math.random() * 1.6 + 0.8;    // 揺れ周期数（全体）
+      const swPh    = Math.random() * Math.PI * 2;
+      const rotAmp  = Math.random() * 26 + 12;       // ひらひら角度
+      const rotFreq = swFreq * (Math.random() * 0.9 + 1.3);
+      const rotPh   = Math.random() * Math.PI * 2;
+      const drift   = (Math.random() - 0.5) * 55;   // 斜め流れ
+
+      // 28ステップのキーフレームでサイン波パスを近似
+      const STEPS = 28;
+      const frames = [];
+
+      for (let i = 0; i <= STEPS; i++) {
+        const t   = i / STEPS;
+        const sx  = swAmp  * Math.sin(2 * Math.PI * swFreq  * t + swPh)  + drift * t;
+        const rot = rotAmp * Math.sin(2 * Math.PI * rotFreq * t + rotPh);
+        const y   = -60 + t * (heroH + 120);
+
+        // なめらかフェードイン・アウト
+        let op = 0.82;
+        if      (t < 0.07) op = (t / 0.07) * 0.82;
+        else if (t > 0.91) op = ((1 - t) / 0.09) * 0.82;
+
+        frames.push({
+          transform: `translate(${startX + sx}px,${y}px) rotate(${rot}deg)`,
+          opacity:   Math.max(0, op),
+          offset:    t,
+        });
+      }
+
+      const anim = wrap.animate(frames, { duration: dur, easing: 'linear', fill: 'forwards' });
+      anim.onfinish = () => wrap.remove();
+    }
+
+    for (let i = 0; i < 4; i++) setTimeout(spawn, i * 600);
+    setInterval(spawn, 2000);
+  })();
+</script>
+</body>
+</html>
