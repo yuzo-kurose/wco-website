@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>一般社団法人WCO — 地球を美しく生きる</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://indestructibletype-fonthosting.github.io/renner.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Welzo palette */
+      --green:      #168352;
+      --green-lt:   #1fa063;
+      --dark:       #251e1c;
+      --dark-2:     #1a1410;
+      --white:      #ffffff;
+      --gray-f4:    #f4f4f4;
+      --gray-8d:    #8d8d8d;
+      --gray-c6:    #c6c6c6;
+      /* GLFF palette */
+      --glff-green: #4ab134;
+      --glff-pale:  #e6f7e3;
+      --gray-eb:    #EBEBEC;
+      --gray-de:    #dedee0;
+      --text-dark:  #333333;
+      /* Fonts */
+      --font-script: 'Great Vibes', cursive;
+      --font-renner: "Renner*", 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+      --font-en:    'Poppins', 'Helvetica Neue', Arial, sans-serif;
+      --font-ja:    'Noto Sans JP', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    }
+
+    html { font-size: 62.5%; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-ja);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.8;
+      overflow-x: hidden;
+      font-feature-settings: "palt";
+    }
+
+    a, img, button { transition: .3s; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: .7; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── GLFF 装飾セクション大見出し ── */
+    .glff-heading {
+      font-family: var(--font-renner);
+      font-size: 9.2rem;
+      font-weight: 800;
+      color: var(--glff-green);
+      letter-spacing: .5rem;
+      line-height: 1.2;
+      margin-top: -.22em;
+      margin-bottom: .6rem;
+    }
+
+    .glff-heading span {
+      display: block;
+      font-family: var(--font-ja);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--text-dark);
+      letter-spacing: .1rem;
+      padding-left: 1rem;
+    }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5.2rem;
+      transition: background .3s, box-shadow .3s;
+    }
+
+    #nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--font-en);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .06em;
+      transition: color .3s;
+    }
+
+    #nav.scrolled .nav-logo { color: var(--dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 3.6rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-en);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: .05em;
+      transition: color .2s, opacity .2s;
+    }
+
+    .nav-links a:hover { color: #fff; opacity: 1; }
+
+    #nav.scrolled .nav-links a { color: var(--gray-8d); }
+    #nav.scrolled .nav-links a:hover { color: var(--green); opacity: 1; }
+
+    .nav-contact {
+      font-family: var(--font-en);
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: .6rem 2rem;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+
+    .nav-contact:hover { background: rgba(255,255,255,0.15); opacity: 1; }
+    #nav.scrolled .nav-contact { color: var(--green); border-color: var(--green); }
+    #nav.scrolled .nav-contact:hover { background: var(--green); color: #fff; }
+
+    /* ── HERO ── */
+    #hero {
+      height: 100vh;
+      min-height: 640px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      transform: scale(1.04);
+      animation: heroZoom 12s ease-out forwards;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(37,30,28,0.82) 0%,
+        rgba(37,30,28,0.55) 55%,
+        rgba(37,30,28,0.25) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5.2rem;
+      max-width: 820px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-script);
+      font-size: 3.2rem;
+      font-weight: 400;
+      letter-spacing: .02em;
+      text-transform: none;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .hero-title {
+      font-family: var(--font-en);
+      font-size: clamp(5.2rem, 7.5vw, 9.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-title-ja {
+      font-family: var(--font-ja);
+      font-size: clamp(3.6rem, 5.5vw, 7.2rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .04em;
+      line-height: 1.4;
+      margin-bottom: 3.2rem;
+      opacity: .9;
+    }
+
+    .hero-desc {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      letter-spacing: .04em;
+      margin-bottom: 4.8rem;
+      max-width: 460px;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 3.2rem;
+    }
+
+    .btn-fill {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      padding: 1.2rem 3.2rem;
+      background: var(--glff-green);
+      color: #fff;
+      font-family: var(--font-renner);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      border-radius: 45px;
+      border: solid 1px var(--glff-green);
+      transition: background .3s, color .3s, transform .2s;
+    }
+
+    .btn-fill:hover { background: #fff; color: var(--glff-green); transform: translateY(-2px); opacity: 1; }
+    .btn-fill svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+    .btn-text-arrow {
+      font-family: var(--font-en);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: rgba(255,255,255,0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .btn-text-arrow::after {
+      content: '→';
+      transition: transform .2s;
+    }
+
+    .btn-text-arrow:hover { color: #fff; opacity: 1; }
+    .btn-text-arrow:hover::after { transform: translateX(4px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 4rem; left: 5.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      z-index: 2;
+    }
+
+    .hero-scroll-line {
+      width: 64px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      animation: lineSlide 2s ease-in-out infinite;
+    }
+
+    @keyframes lineSlide {
+      0%   { transform: translateX(-100%); }
+      50%  { transform: translateX(0); }
+      100% { transform: translateX(100%); }
+    }
+
+    .hero-scroll-text {
+      font-family: var(--font-en);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── SECTION COMMON ── */
+    .sec { padding: 12rem 0; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; padding: 0 5.2rem; }
+
+    .sec-eyebrow {
+      font-family: var(--font-en);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .sec-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--green);
+    }
+
+    .sec-heading {
+      font-family: var(--font-en);
+      font-size: clamp(3.6rem, 5vw, 6.4rem);
+      font-weight: 700;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+      color: var(--dark);
+    }
+
+    .sec-heading-ja {
+      font-family: var(--font-ja);
+      font-size: clamp(2rem, 2.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: .02em;
+      line-height: 1.4;
+      color: var(--dark);
+      margin-top: .8rem;
+    }
+
+    .sec-body {
+      font-size: 1.6rem;
+      color: var(--gray-8d);
+      line-height: 2;
+      letter-spacing: .04em;
+    }
+
+    /* ── CONCEPT ── */
+    #concept { background: var(--glff-pale); }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10rem;
+      align-items: center;
+      margin-top: 8rem;
+    }
+
+    .concept-photo {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .concept-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .concept-quote {
+      font-family: var(--font-ja);
+      font-size: clamp(2.2rem, 3vw, 3.4rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.6;
+      letter-spacing: -.01em;
+      margin-bottom: 3.2rem;
+      padding-left: 2.4rem;
+      border-left: 3px solid var(--green);
+    }
+
+    /* ── NUMBERS ── */
+    #numbers {
+      background: var(--dark);
+      padding: 8rem 0;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .number-item {
+      padding: 5.6rem 4.8rem;
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .number-val {
+      font-family: var(--font-en);
+      font-size: 7.2rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .number-unit {
+      font-size: 2.8rem;
+      font-weight: 300;
+    }
+
+    .number-label {
+      font-size: 1.4rem;
+      color: var(--gray-8d);
+      letter-spacing: .08em;
+      margin-top: 1.2rem;
+      font-family: var(--font-ja);
+    }
+
+    /* ── MISSION ── */
+    #mission { background: var(--gray-f4); }
+
+    /* Mission → Vision フローレイアウト */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 80px 1fr;
+      gap: 0;
+      margin-top: 6rem;
+      align-items: center;
+    }
+
+    .mission-card {
+      background: var(--white);
+      padding: 4.8rem 4rem;
+      border: solid 1px var(--gray-eb);
+      position: relative;
+    }
+
+    .mission-card.is-mission { border-left: solid 4px var(--glff-green); }
+    .mission-card.is-vision  { border-left: solid 4px var(--green); }
+
+    .mission-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      color: var(--glff-green);
+    }
+
+    .mission-arrow span {
+      font-family: var(--font-renner);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray-8d);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .mission-arrow svg {
+      width: 28px; height: 28px;
+      fill: var(--glff-green);
+    }
+
+    .mission-role {
+      font-family: var(--font-renner);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--glff-green);
+      margin-bottom: .8rem;
+    }
+
+    .mission-card.is-vision .mission-role { color: var(--green); }
+
+    .mission-label {
+      font-size: 1.3rem;
+      color: var(--gray-8d);
+      letter-spacing: .06em;
+      margin-bottom: 2rem;
+    }
+
+    .mission-text {
+      font-family: var(--font-ja);
+      font-size: clamp(1.8rem, 2.2vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.6;
+      letter-spacing: -.01em;
+    }
+
+    /* ── VALUES ── */
+    #values { background: var(--white); }
+
+    .values-wrap { margin-top: 6rem; }
+
+    .value-row {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      align-items: baseline;
+      gap: 4rem;
+      padding: 3.6rem 0;
+      border-bottom: dashed 1px var(--gray-de);
+      transition: background .2s;
+    }
+
+    .value-row:first-child { border-top: solid 3px var(--gray-eb); }
+    .value-row:last-child  { border-bottom: solid 3px var(--gray-eb); }
+
+    .value-num {
+      font-family: var(--font-renner);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      color: var(--glff-green);
+    }
+
+    .value-text {
+      font-family: var(--font-ja);
+      font-size: clamp(1.9rem, 2.2vw, 2.6rem);
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -.01em;
+      line-height: 1.4;
+    }
+
+    /* ── GLFF ── */
+    #glff { background: var(--glff-green); }
+
+    #glff .glff-heading { color: rgba(255,255,255,0.9); }
+    #glff .glff-heading span { color: rgba(255,255,255,0.75); }
+    #glff .sec-body { color: rgba(255,255,255,0.82); }
+
+    .glff-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: start;
+      margin-top: 6rem;
+    }
+
+    .glff-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-renner);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: #fff;
+      margin-top: 3.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.45);
+      padding-bottom: .4rem;
+      transition: .3s;
+    }
+
+    .glff-link:hover { border-color: #fff; opacity: 1; }
+
+    .glff-events { display: flex; flex-direction: column; gap: 1.6rem; }
+
+    /* GLFF式イベントカード */
+    .event-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.4rem 2.8rem;
+      background: #fff;
+      filter: drop-shadow(0 2px 5px rgba(17,17,17,0.05));
+      transition: .3s;
+    }
+
+    .event-item:hover {
+      filter: drop-shadow(0 4px 12px rgba(17,17,17,0.1));
+      transform: translateY(-2px);
+    }
+
+    .event-item.special { background: var(--glff-pale); }
+
+    .event-date {
+      font-family: var(--font-renner);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--gray-8d);
+      letter-spacing: .12em;
+      margin-bottom: .4rem;
+    }
+
+    .event-city {
+      font-family: var(--font-renner);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--glff-green);
+      letter-spacing: .1rem;
+    }
+
+    /* GLFFのノッチ付きカテゴリラベル */
+    .event-badge {
+      display: inline-block;
+      padding: .5rem 2.4rem .5rem 1.6rem;
+      background: var(--glff-green);
+      font-family: var(--font-ja);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .2rem;
+      position: relative;
+    }
+
+    .event-badge::after {
+      content: '';
+      width: 0; height: 0;
+      border-width: 14px 9px 14px 0;
+      border-color: transparent #fff transparent transparent;
+      border-style: solid;
+      position: absolute;
+      top: 0; right: 0;
+    }
+
+    .event-badge.overseas {
+      background: var(--dark);
+    }
+
+    /* ── JOIN ── */
+    #join {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8rem;
+      align-items: center;
+    }
+
+    .join-photo {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .join-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(22,131,82,0.1) 0%, transparent 60%);
+    }
+
+    .join-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .join-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.4rem;
+      padding: 2.8rem;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .join-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 4px 24px rgba(22,131,82,0.08);
+    }
+
+    .join-card-num {
+      font-family: var(--font-en);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      color: var(--green);
+      margin-top: .4rem;
+      flex-shrink: 0;
+    }
+
+    .join-card-name {
+      font-family: var(--font-ja);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .6rem;
+    }
+
+    .join-card-desc {
+      font-size: 1.4rem;
+      color: var(--gray-8d);
+      line-height: 1.8;
+      letter-spacing: .03em;
+    }
+
+    .join-cta { margin-top: 4rem; }
+
+    .btn-fill-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: .8rem;
+      padding: 1.2rem 3.2rem;
+      background: var(--glff-green);
+      color: #fff;
+      font-family: var(--font-renner);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      border: solid 1px var(--glff-green);
+      border-radius: 25px;
+      transition: .3s;
+      position: relative;
+    }
+
+    .btn-fill-dark::after {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-right: solid 2px #fff;
+      border-bottom: solid 2px #fff;
+      transform: rotate(-45deg);
+      margin-left: .4rem;
+      transition: .3s;
+    }
+
+    .btn-fill-dark:hover { background: #fff; color: var(--glff-green); opacity: 1; }
+    .btn-fill-dark:hover::after { border-color: var(--glff-green); margin-left: .8rem; }
+    .btn-fill-dark svg { display: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark-2);
+      padding: 7.2rem 5.2rem 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 8rem;
+      padding-bottom: 5.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 3.2rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-en);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .06em;
+      margin-bottom: 1.6rem;
+    }
+
+    .footer-tagline {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.8;
+      letter-spacing: .04em;
+    }
+
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+    }
+
+    .footer-nav h4 {
+      font-family: var(--font-en);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 2rem;
+    }
+
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .footer-nav a {
+      font-size: 1.4rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: .04em;
+      transition: color .2s;
+    }
+
+    .footer-nav a:hover { color: var(--white); opacity: 1; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .copy {
+      font-family: var(--font-en);
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: .06em;
+    }
+
+    /* ── FADE IN ── */
+    .fade {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+    }
+
+    .fade.in { opacity: 1; transform: translateY(0); }
+    .fd1 { transition-delay: .1s; }
+    .fd2 { transition-delay: .2s; }
+    .fd3 { transition-delay: .3s; }
+    .fd4 { transition-delay: .4s; }
+    .fd5 { transition-delay: .5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      #nav { padding: 0 2.4rem; }
+      .nav-links { display: none; }
+      .sec-inner { padding: 0 2.4rem; }
+      .hero-content { padding: 0 2.4rem; }
+      .concept-grid, .glff-layout, .join-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .mission-grid { grid-template-columns: 1fr; }
+      .mission-arrow { flex-direction: row; padding: 1.6rem 0; }
+      .mission-arrow span { writing-mode: horizontal-tb; }
+      .mission-arrow svg { transform: rotate(90deg); }
+      .numbers-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 4rem; }
+      .footer-nav { grid-template-columns: 1fr 1fr; }
+      .sec { padding: 8rem 0; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 5.2rem; }
+      .number-val { font-size: 5.6rem; }
+      .hero-scroll { display: none; }
+      footer { padding: 5.6rem 2.4rem 3.2rem; }
+      .footer-nav { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header id="nav">
+  <a href="#" class="nav-logo">WCO</a>
+  <ul class="nav-links">
+    <li><a href="#concept">About</a></li>
+    <li><a href="#mission">Mission</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#glff">GLFF</a></li>
+    <li><a href="#join">Join</a></li>
+  </ul>
+  <a href="#join" class="nav-contact">Contact</a>
+</header>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1800&q=85" alt="土と手" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title-ja">地球を、美しく生きる。</h1>
+    <p class="hero-desc">自分らしさが世界を幸せにする循環を。<br>食・自然・美を通じて世界人としての生き方を提案します。</p>
+    <div class="hero-cta-wrap">
+      <a href="#concept" class="btn-fill">
+        WCOについて
+        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+      </a>
+      <a href="#glff" class="btn-text-arrow">GLFFを見る</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- ── NUMBERS ── -->
+<section id="numbers">
+  <div class="sec-inner">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONCEPT ── -->
+<section id="concept" class="sec">
+  <div class="sec-inner">
+    <h3 class="glff-heading fade">About<span>WCOについて</span></h3>
+
+    <div class="concept-grid">
+      <div class="concept-photo fade">
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80" alt="芽吹く緑">
+      </div>
+      <div>
+        <p class="concept-quote fade fd1">
+          世界の中の一人として<br>責任を持って生きる 
+        </p>
+        <p class="sec-body fade fd2">
+          WCOは、「世界的視野」と「個人の包括的な幸せ（Well-being）」を両立させるため、若者が中心となり世代・業界・国境を超えて共創を目指します。<br><br>
+          一人ひとりが自らの心身を整え、心地よい人間関係を築くという「内側の充実」は、必ず「外側（世界）」へのポジティブな行動へと繋がります。個人の独自のポリシー（生き方）が尊重され、それが地球環境や他者への貢献と地続きになることで、はじめて真の持続可能性が生まれると私たちは信じています。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MISSION ── -->
+<section id="mission" class="sec" style="background:var(--gray-f4);">
+  <div class="sec-inner">
+    <h3 class="glff-heading fade">Mission<span>ミッション・ビジョン</span></h3>
+
+    <div class="mission-grid">
+
+      <!-- Mission -->
+      <div class="mission-card is-mission fade fd1">
+        <p class="mission-role">Mission</p>
+        <p class="mission-label">私たちの使命</p>
+        <p class="mission-text">地球を美しく生きる人を増やす</p>
+      </div>
+
+      <!-- 矢印コネクター -->
+      <div class="mission-arrow fade fd2">
+        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+        <span>leads to</span>
+      </div>
+
+      <!-- Vision -->
+      <div class="mission-card is-vision fade fd3">
+        <p class="mission-role">Vision</p>
+        <p class="mission-label">目指す未来</p>
+        <p class="mission-text">世界人としての生き方を提案し、自分らしさが世界を幸せにする循環を</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section id="values" class="sec">
+  <div class="sec-inner">
+    <h3 class="glff-heading fade">Values<span>大切にしていること</span></h3>
+
+    <div class="values-wrap">
+      <div class="value-row fade fd1">
+        <span class="value-num">01</span>
+        <span class="value-text">世界を、自分ごとに生きる</span>
+      </div>
+      <div class="value-row fade fd2">
+        <span class="value-num">02</span>
+        <span class="value-text">本物の出会いが、人を変える</span>
+      </div>
+      <div class="value-row fade fd3">
+        <span class="value-num">03</span>
+        <span class="value-text">食べることは、地球を生きること</span>
+      </div>
+      <div class="value-row fade fd4">
+        <span class="value-num">04</span>
+        <span class="value-text">美を求める心が、道を照らす</span>
+      </div>
+      <div class="value-row fade fd5">
+        <span class="value-num">05</span>
+        <span class="value-text">青年が変われば、社会が変わる</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GLFF ── -->
+<section id="glff" class="sec">
+  <div class="sec-inner">
+    <h3 class="glff-heading fade">GLFF<span>Green Life Food Festa</span></h3>
+
+    <div class="glff-layout">
+      <div>
+        <p class="sec-body fade fd1">
+          食・農・文化・アートを融合させ、「地球を美しく生きる」を体感できる場をつくる、WCOの主要イベントです。2018年の滋賀開催から11回を重ね、2026年は初の海外開催（台湾）を予定しています。
+        </p>
+        <a href="https://greenlifefoodfesta.com" target="_blank" class="glff-link fade fd2">
+          Visit GLFF Website →
+        </a>
+      </div>
+
+      <div class="glff-events fade fd1">
+        <div class="event-item">
+          <div>
+            <div class="event-date">2026.10.11</div>
+            <div class="event-city">神戸</div>
+          </div>
+          <div class="event-badge">予定</div>
+        </div>
+        <div class="event-item">
+          <div>
+            <div class="event-date">2026.10.12</div>
+            <div class="event-city">金沢</div>
+          </div>
+          <div class="event-badge">予定</div>
+        </div>
+        <div class="event-item">
+          <div>
+            <div class="event-date">2026.10.25</div>
+            <div class="event-city">奈良</div>
+          </div>
+          <div class="event-badge">予定</div>
+        </div>
+        <div class="event-item special">
+          <div>
+            <div class="event-date">2026 秋</div>
+            <div class="event-city">台湾</div>
+          </div>
+          <div class="event-badge overseas">海外初</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── JOIN ── -->
+<section id="join" class="sec">
+  <div class="sec-inner">
+    <div class="join-grid">
+      <div class="join-photo fade">
+        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80" alt="仲間との交流">
+      </div>
+      <div>
+        <p class="sec-eyebrow fade">Join Us</p>
+        <h2 class="sec-heading fade fd1">Together.</h2>
+        <p class="sec-heading-ja fade fd2">共に、地球を美しく生きよう。</p>
+        <p class="sec-body fade fd3" style="margin-top:2.4rem;">
+          WCOでは正会員・賛助会員を募集しています。理念に共感する方のご参加をお待ちしています。
+        </p>
+
+        <div class="join-cards">
+          <div class="join-card fade fd1">
+            <span class="join-card-num">01</span>
+            <div>
+              <div class="join-card-name">正会員</div>
+              <div class="join-card-desc">活動に主体的に参加する会員。GLFFの企画・運営に携わります。</div>
+            </div>
+          </div>
+          <div class="join-card fade fd2">
+            <span class="join-card-num">02</span>
+            <div>
+              <div class="join-card-name">賛助会員</div>
+              <div class="join-card-desc">活動をサポートする会員。拠点の大人の方も参加できます。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="join-cta fade fd3">
+          <a href="#" class="btn-fill-dark">
+            お問い合わせ・入会申込
+            <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">WCO</div>
+        <p class="footer-tagline">
+          一般社団法人 World Citizen Organization<br>
+          地球を美しく生きる人を増やす
+        </p>
+      </div>
+      <nav class="footer-nav">
+        <div>
+          <h4>About</h4>
+          <ul>
+            <li><a href="#concept">WCOとは</a></li>
+            <li><a href="#mission">ミッション</a></li>
+            <li><a href="#values">バリュー</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Activity</h4>
+          <ul>
+            <li><a href="#glff">GLFF</a></li>
+            <li><a href="https://greenlifefoodfesta.com" target="_blank">GLFFサイト</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Join</h4>
+          <ul>
+            <li><a href="#join">正会員</a></li>
+            <li><a href="#join">賛助会員</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="copy">© 2026 一般社団法人WCO All rights reserved.</p>
+      <p class="copy">Photos: <a href="https://unsplash.com" target="_blank" style="color:inherit;">Unsplash</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold: 0.1, rootMargin: '0px 0px -48px 0px' }
+  );
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Hero entrance animation
+  document.querySelectorAll('.hero-content > *').forEach((el, i) => {
+    el.style.cssText += `opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.16,1,.3,1) ${.4+i*.15}s,transform .9s cubic-bezier(.16,1,.3,1) ${.4+i*.15}s`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }));
+  });
+</script>
+</body>
+</html>
