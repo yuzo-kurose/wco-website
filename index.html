@@ -537,15 +537,15 @@
     .glff-link { text-align: center; margin-top: 4rem; }
 
     /* ── JOIN ── */
-    #sec-join { background: #4ab134; }
+    #sec-join { background: #fff; }
 
-    #sec-join .sec-heading { color: rgba(255,255,255,0.18); }
-    #sec-join .sec-heading-sub { color: rgba(255,255,255,0.9); }
+    #sec-join .sec-heading { color: rgba(74,177,52,0.15); }
+    #sec-join .sec-heading-sub { color: #333; }
 
     .join-title {
       font-size: clamp(3.2rem, 5vw, 5.6rem);
       font-weight: 800;
-      color: #fff;
+      color: #4ab134;
       letter-spacing: .1em;
       line-height: 1.3;
       margin-bottom: 2rem;
@@ -553,7 +553,7 @@
 
     .join-sub {
       font-size: 1.6rem;
-      color: rgba(255,255,255,0.8);
+      color: #666;
       letter-spacing: .08em;
       line-height: 1.9;
       margin-bottom: 4rem;
@@ -569,22 +569,22 @@
     .join-type {
       flex: 1;
       min-width: 200px;
-      border: solid 1px rgba(255,255,255,0.4);
+      border: solid 1px #EBEBEC;
       padding: 2.4rem;
-      background: rgba(255,255,255,0.08);
+      background: #f8faf7;
     }
 
     .join-type-name {
       font-size: 2rem;
       font-weight: 800;
-      color: #fff;
+      color: #333;
       letter-spacing: .1em;
       margin-bottom: .8rem;
     }
 
     .join-type-desc {
       font-size: 1.3rem;
-      color: rgba(255,255,255,0.65);
+      color: #777;
       letter-spacing: .05em;
     }
 
@@ -711,6 +711,116 @@
     .footer-sns a:hover svg { fill: #fff; }
 
 
+    /* ── PILLARS ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+
+    .pillar-card {
+      background: #4ab134;
+      border-radius: 50%;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3.2rem 2.8rem;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(74,177,52,0.35);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.6rem;
+    }
+
+    .pillar-icon svg { width: 24px; height: 24px; fill: #fff; }
+
+    .pillar-card-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .04em;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .pillar-card-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      letter-spacing: .04em;
+    }
+
+    /* ── ACTIVITIES ── */
+    #sec-activities { background: #e6f7e3; }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .activity-item {
+      background: #fff;
+      padding: 2.8rem;
+      border-radius: 8px;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      transition: .3s;
+    }
+
+    .activity-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .activity-num {
+      font-family: "Renner*", "Kosugi", sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #4ab134;
+      opacity: .35;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .activity-body { flex: 1; }
+
+    .activity-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #333;
+      letter-spacing: .06em;
+      margin-bottom: .8rem;
+    }
+
+    .activity-desc {
+      font-size: 1.4rem;
+      color: #666;
+      line-height: 1.8;
+      letter-spacing: .04em;
+    }
+
+    .activities-divider {
+      border-top: solid 3px #c9e8c3;
+      margin: 5rem 0 4rem;
+    }
+
     /* ── SCROLL ANIMATION ── */
     .elm-fadeup {
       opacity: 0;
@@ -737,6 +847,8 @@
       .sec-heading-sub { font-size: 1.6rem; padding-left: 2rem; }
       .sec-inner { padding-top: 2rem; }
       .event-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
       .join-types { flex-direction: column; }
       .site-footer .wrap { flex-direction: column; }
       .glff-count { gap: 2rem; }
@@ -764,8 +876,9 @@
   <ul id="top-menu">
     <li><a href="#sec-mission" onclick="closeNav()">Mission<span>ミッション・ビジョン</span></a></li>
     <li><a href="#sec-about"   onclick="closeNav()">About<span>WCOについて</span></a></li>
-    <li><a href="#sec-values"  onclick="closeNav()">Values<span>大切にしていること</span></a></li>
-    <li><a href="#sec-glff"   onclick="closeNav()">GLFF<span>Green Life Food Festa</span></a></li>
+    <li><a href="#sec-values"     onclick="closeNav()">Values<span>大切にしていること</span></a></li>
+    <li><a href="#sec-activities" onclick="closeNav()">Activities<span>主な活動</span></a></li>
+    <li><a href="#sec-glff"       onclick="closeNav()">GLFF<span>Green Life Food Festa</span></a></li>
     <li><a href="#sec-join"   onclick="closeNav()">Join<span>会員について</span></a></li>
     <li><a href="#"           onclick="closeNav()">Contact<span>お問い合わせ</span></a></li>
   </ul>
@@ -903,6 +1016,88 @@
   </div>
 </section>
 
+<!-- ── ACTIVITIES ── -->
+<section id="sec-activities">
+  <h3 class="sec-heading">Activities<span class="sec-heading-sub">主な活動</span></h3>
+  <div class="section-wrap" style="max-width:900px">
+    <div class="sec-inner">
+
+      <span class="sec-tag elm-fadeup">活動の３つの柱</span>
+      <div class="pillars-grid">
+
+        <div class="pillar-card elm-fadeup">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 5.5-8 9H9c.17-1.35.52-2.67 1-3.9C11.63 6.08 13 4.11 13 2c0 0-3 2-3 6-1.44.98-2.71 2.19-3.78 3.56A24.23 24.23 0 0 1 5 8C5 8 2 10 2 14c.04-.17 3-5 7-5h.5C8.37 9.03 6.82 4.5 4 4c0 0 2 3.5 2 7.5L5 12s-1 4 0 8h1l.44-1.04A5.85 5.85 0 0 0 8 20a5.99 5.99 0 0 0 3.94-1.46C13.17 19.6 14.5 20 16 20h.5c2.35-5.52 3.5-12-.5-12z"/>
+            </svg>
+          </div>
+          <h4 class="pillar-card-title">自然栽培を含めたライフスタイルの啓蒙</h4>
+          <p class="pillar-card-desc">SNSを通して自然栽培を含めたライフスタイルの選択肢を世界へ広めます。</p>
+        </div>
+
+        <div class="pillar-card elm-fadeup">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+          </div>
+          <h4 class="pillar-card-title">GLFF支援</h4>
+          <p class="pillar-card-desc">マルシェや講演会を通じ、体に良い食と「良いもの」を求める仲間が繋がる場を創出。</p>
+        </div>
+
+        <div class="pillar-card elm-fadeup">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+          <h4 class="pillar-card-title">グローバル人材育成</h4>
+          <p class="pillar-card-desc">外国人ゲストとの農業体験を通じ、多様性と土の尊さを学ぶ次世代リーダーを育成。</p>
+        </div>
+
+      </div>
+
+      <div class="activities-divider elm-fadeup"></div>
+
+      <div class="activities-grid">
+
+        <div class="activity-item elm-fadeup">
+          <div class="activity-num">01</div>
+          <div class="activity-body">
+            <p class="activity-title">GLFFマルシェ・ワークショップ</p>
+            <p class="activity-desc">オーガニック＆ナチュラルをテーマに全国7都市で開催。体に良い食と「良いもの」が集まる場をつくります。</p>
+          </div>
+        </div>
+
+        <div class="activity-item elm-fadeup">
+          <div class="activity-num">02</div>
+          <div class="activity-body">
+            <p class="activity-title">SNS・啓発活動</p>
+            <p class="activity-desc">自然栽培を含めたライフスタイルをSNSで発信し、「地球を美しく生きる」選択肢を国内外へ広めます。</p>
+          </div>
+        </div>
+
+        <div class="activity-item elm-fadeup">
+          <div class="activity-num">03</div>
+          <div class="activity-body">
+            <p class="activity-title">グローバル農業体験プログラム</p>
+            <p class="activity-desc">外国人ゲストと農業を共に体験し、多様性と土の尊さ、食の本質を学ぶ国際交流プログラムです。</p>
+          </div>
+        </div>
+
+        <div class="activity-item elm-fadeup">
+          <div class="activity-num">04</div>
+          <div class="activity-body">
+            <p class="activity-title">次世代リーダー育成・研修</p>
+            <p class="activity-desc">若者が主体となりセミナー・交流会を企画・運営。世界的視野をもつ次世代リーダーを輩出します。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── GLFF ── -->
 <section id="sec-glff">
   <h3 class="sec-heading">GLFF<span class="sec-heading-sub">Green Life Food Festa</span></h3>
@@ -988,7 +1183,7 @@
       </div>
 
       <div class="elm-fadeup" style="text-align:center;">
-        <a href="#" class="btn-link btn-white">お問い合わせ・入会申込</a>
+        <a href="#" class="btn-link">お問い合わせ・入会申込</a>
       </div>
 
     </div>
@@ -1009,6 +1204,7 @@
       <ul class="footer-nav-list">
         <li><a href="#sec-mission">Mission</a></li>
         <li><a href="#sec-values">Values</a></li>
+        <li><a href="#sec-activities">Activities</a></li>
         <li><a href="#sec-glff">GLFF</a></li>
         <li><a href="#sec-join">Join</a></li>
         <li><a href="#">Contact</a></li>

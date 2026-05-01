@@ -30,6 +30,13 @@
       --font-renner: "Renner*", 'Poppins', 'Helvetica Neue', Arial, sans-serif;
       --font-en:    'Poppins', 'Helvetica Neue', Arial, sans-serif;
       --font-ja:    'Noto Sans JP', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      --i3-gold:       #c89c3f;
+      --i3-warm:       #fdf9f3;
+      --i3-gray-10:    #f7f7f5;
+      --i3-gray-60:    #666666;
+      --i3-green-pale: #eaf6e6;
+      --i3-green-deep: #1a5c10;
+      --i3-green-dark: #357a24;
     }
 
     html { font-size: 62.5%; scroll-behavior: smooth; }
@@ -362,7 +369,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10rem;
-      align-items: center;
+      align-items: start;
       margin-top: 8rem;
     }
 
@@ -435,76 +442,163 @@
     /* ── MISSION ── */
     #mission { background: var(--gray-f4); }
 
-    /* Mission → Vision フローレイアウト */
-    .mission-grid {
+    /* ── MVV 2カラムレイアウト（左：テキスト、右：大きなピラミッド） ── */
+    .mvv-layout {
       display: grid;
-      grid-template-columns: 1fr 80px 1fr;
-      gap: 0;
-      margin-top: 6rem;
-      align-items: center;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      margin-top: 5rem;
+      align-items: start;
     }
 
-    .mission-card {
-      background: var(--white);
-      padding: 4.8rem 4rem;
-      border: solid 1px var(--gray-eb);
+    .mvv-pyramid-col {
+      position: sticky;
+      top: 80px;
+    }
+
+    .mvv-pyramid {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .mvv-pyramid svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── MVV イントロ ── */
+    .mvv-intro {
+      margin: 4rem 0 6rem;
+      padding: 4rem;
+      background: var(--glff-pale);
+      border-left: 4px solid var(--glff-green);
+    }
+
+    .mvv-intro-lead {
+      font-family: var(--font-ja);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: .04em;
+      margin-bottom: 3.2rem;
+    }
+
+    .mvv-intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.2rem;
+    }
+
+    .mvv-intro-item {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .mvv-intro-label {
+      font-family: var(--font-renner);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--glff-green);
+    }
+
+    .mvv-intro-ja {
+      font-family: var(--font-ja);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: .05em;
+    }
+
+    .mvv-intro-desc {
+      font-size: 1.3rem;
+      color: var(--gray-8d);
+      line-height: 1.85;
+      letter-spacing: .03em;
+      margin-top: .4rem;
+    }
+
+    /* ── 左カラム：MVV縦積み（コンパクト版） ── */
+    .mvv-block {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--gray-eb);
+    }
+
+    .mvv-block:first-child { padding-top: 0; }
+    .mvv-block:last-child  { border-bottom: none; }
+
+    .mvv-label {
+      font-family: var(--font-renner);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      color: var(--glff-green);
+      padding-bottom: .8rem;
+      border-bottom: solid 2px var(--glff-green);
+      display: inline-block;
+      margin-bottom: 1.4rem;
+      min-width: 11rem;
+    }
+
+    .mvv-tagline {
+      font-family: var(--font-ja);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.5;
+      letter-spacing: .03em;
+      margin-bottom: 1rem;
+    }
+
+    .mvv-desc {
+      font-size: 1.3rem;
+      color: var(--gray-8d);
+      line-height: 1.8;
+      letter-spacing: .03em;
+    }
+
+    /* Value項目 */
+    .mvv-values { margin-top: .6rem; }
+
+    .mvv-value-item {
+      padding: 1.2rem 0;
+      border-bottom: dashed 1px var(--gray-de);
+    }
+
+    .mvv-value-item:last-child { border-bottom: none; }
+
+    .mvv-value-statement {
+      font-family: var(--font-ja);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: .03em;
+      line-height: 1.5;
+      margin-bottom: .3rem;
+      padding-left: 2rem;
       position: relative;
     }
 
-    .mission-card.is-mission { border-left: solid 4px var(--glff-green); }
-    .mission-card.is-vision  { border-left: solid 4px var(--green); }
-
-    .mission-arrow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: .6rem;
-      color: var(--glff-green);
+    .mvv-value-statement::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: .9em;
+      width: 1.4rem;
+      height: 2px;
+      background: var(--glff-green);
     }
 
-    .mission-arrow span {
-      font-family: var(--font-renner);
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: .15em;
-      text-transform: uppercase;
+    .mvv-value-desc {
+      font-size: 1.2rem;
       color: var(--gray-8d);
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-    }
-
-    .mission-arrow svg {
-      width: 28px; height: 28px;
-      fill: var(--glff-green);
-    }
-
-    .mission-role {
-      font-family: var(--font-renner);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--glff-green);
-      margin-bottom: .8rem;
-    }
-
-    .mission-card.is-vision .mission-role { color: var(--green); }
-
-    .mission-label {
-      font-size: 1.3rem;
-      color: var(--gray-8d);
-      letter-spacing: .06em;
-      margin-bottom: 2rem;
-    }
-
-    .mission-text {
-      font-family: var(--font-ja);
-      font-size: clamp(1.8rem, 2.2vw, 2.6rem);
-      font-weight: 700;
-      color: var(--dark);
       line-height: 1.6;
-      letter-spacing: -.01em;
+      letter-spacing: .03em;
+      padding-left: 2rem;
     }
 
     /* ── VALUES ── */
@@ -543,11 +637,11 @@
     }
 
     /* ── GLFF ── */
-    #glff { background: var(--glff-green); }
+    #glff { background: var(--white); }
 
-    #glff .glff-heading { color: rgba(255,255,255,0.9); }
-    #glff .glff-heading span { color: rgba(255,255,255,0.75); }
-    #glff .sec-body { color: rgba(255,255,255,0.82); }
+    #glff .glff-heading { color: var(--glff-green); }
+    #glff .glff-heading span { color: var(--dark); }
+    #glff .sec-body { color: var(--gray-8d); }
 
     .glff-layout {
       display: grid;
@@ -565,14 +659,14 @@
       font-size: 1.6rem;
       font-weight: 600;
       letter-spacing: .1em;
-      color: #fff;
+      color: var(--glff-green);
       margin-top: 3.6rem;
-      border-bottom: 1px solid rgba(255,255,255,0.45);
+      border-bottom: 1px solid rgba(74,177,52,0.4);
       padding-bottom: .4rem;
       transition: .3s;
     }
 
-    .glff-link:hover { border-color: #fff; opacity: 1; }
+    .glff-link:hover { border-color: var(--glff-green); opacity: 1; }
 
     .glff-events { display: flex; flex-direction: column; gap: 1.6rem; }
 
@@ -640,10 +734,16 @@
 
     /* ── JOIN ── */
     #join {
-      background: var(--white);
+      background: var(--dark-2);
       position: relative;
       overflow: hidden;
     }
+
+    #join .sec-eyebrow { color: var(--glff-green); }
+    #join .sec-eyebrow::before { background: var(--glff-green); }
+    #join .sec-heading { color: #fff; }
+    #join .sec-heading-ja { color: rgba(255,255,255,0.85); }
+    #join .sec-body { color: rgba(255,255,255,0.65); }
 
     .join-grid {
       display: grid;
@@ -677,13 +777,14 @@
       align-items: flex-start;
       gap: 2.4rem;
       padding: 2.8rem;
-      border: 1px solid rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
       transition: border-color .2s, box-shadow .2s;
     }
 
     .join-card:hover {
-      border-color: var(--green);
-      box-shadow: 0 4px 24px rgba(22,131,82,0.08);
+      border-color: var(--glff-green);
+      box-shadow: 0 4px 24px rgba(74,177,52,0.15);
     }
 
     .join-card-num {
@@ -691,7 +792,7 @@
       font-size: 1rem;
       font-weight: 700;
       letter-spacing: .2em;
-      color: var(--green);
+      color: var(--glff-green);
       margin-top: .4rem;
       flex-shrink: 0;
     }
@@ -700,13 +801,13 @@
       font-family: var(--font-ja);
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #fff;
       margin-bottom: .6rem;
     }
 
     .join-card-desc {
       font-size: 1.4rem;
-      color: var(--gray-8d);
+      color: rgba(255,255,255,0.6);
       line-height: 1.8;
       letter-spacing: .03em;
     }
@@ -741,7 +842,7 @@
       transition: .3s;
     }
 
-    .btn-fill-dark:hover { background: #fff; color: var(--glff-green); opacity: 1; }
+    .btn-fill-dark:hover { background: #fff; color: var(--glff-green); border-color: #fff; opacity: 1; }
     .btn-fill-dark:hover::after { border-color: var(--glff-green); margin-left: .8rem; }
     .btn-fill-dark svg { display: none; }
 
@@ -823,6 +924,119 @@
       letter-spacing: .06em;
     }
 
+    /* ── PILLARS ── */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+      margin-top: 4rem;
+    }
+
+    .pillar-card {
+      background: var(--glff-green);
+      border-radius: 50%;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3.6rem 3rem;
+      text-align: center;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(74,177,52,0.35);
+    }
+
+    .pillar-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+    }
+
+    .pillar-icon svg { width: 26px; height: 26px; fill: #fff; }
+
+    .pillar-card-title {
+      font-family: var(--font-ja);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .03em;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .pillar-card-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      letter-spacing: .03em;
+    }
+
+    /* ── ACTIVITIES ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .activity-item {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 12px;
+      display: flex;
+      gap: 2.4rem;
+      align-items: flex-start;
+      transition: transform .3s, box-shadow .3s;
+      border: solid 1px var(--gray-eb);
+    }
+
+    .activity-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    .activity-num {
+      font-family: var(--font-en);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--glff-green);
+      opacity: .4;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .activity-body { flex: 1; }
+
+    .activity-title {
+      font-family: var(--font-ja);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: .04em;
+      margin-bottom: .8rem;
+    }
+
+    .activity-desc {
+      font-size: 1.4rem;
+      color: var(--gray-8d);
+      line-height: 1.85;
+      letter-spacing: .03em;
+    }
+
+    .activities-divider {
+      border-top: solid 2px rgba(74,177,52,0.2);
+      margin: 5.6rem 0 4.8rem;
+    }
+
     /* ── FADE IN ── */
     .fade {
       opacity: 0;
@@ -844,10 +1058,13 @@
       .sec-inner { padding: 0 2.4rem; }
       .hero-content { padding: 0 2.4rem; }
       .concept-grid, .glff-layout, .join-grid { grid-template-columns: 1fr; gap: 4rem; }
-      .mission-grid { grid-template-columns: 1fr; }
-      .mission-arrow { flex-direction: row; padding: 1.6rem 0; }
-      .mission-arrow span { writing-mode: horizontal-tb; }
-      .mission-arrow svg { transform: rotate(90deg); }
+      .mvv-intro { padding: 2.4rem; }
+      .mvv-intro-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .mvv-layout { grid-template-columns: 1fr; gap: 4rem; }
+      .mvv-pyramid-col { position: relative; top: auto; order: -1; }
+      .mvv-pyramid { max-width: 380px; }
       .numbers-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 4rem; }
       .footer-nav { grid-template-columns: 1fr 1fr; }
@@ -861,6 +1078,424 @@
       footer { padding: 5.6rem 2.4rem 3.2rem; }
       .footer-nav { grid-template-columns: 1fr; }
     }
+
+/* ── INDEX3 MERGED SECTIONS ── */
+
+/* Section common (index3 overrides for merged sections) */
+#worldcitizen, #why, #identity, #empathy, #roadmap {
+  --green: var(--glff-green);
+}
+
+.sec-label {
+  font-family: var(--font-en);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--glff-green);
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.sec-label::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--glff-green);
+}
+
+.sec-title {
+  font-family: var(--font-en);
+  font-size: clamp(3rem, 4.5vw, 5.2rem);
+  font-weight: 800;
+  color: var(--glff-green);
+  letter-spacing: .04em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.sec-title-ja {
+  display: block;
+  font-family: var(--font-ja);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--dark);
+  letter-spacing: .04em;
+  margin-top: 1rem;
+}
+.sec-lead {
+  font-size: 1.6rem;
+  color: var(--i3-gray-60);
+  line-height: 2;
+  letter-spacing: .04em;
+  margin-bottom: 4rem;
+  max-width: 720px;
+}
+
+.answer-section { background: var(--i3-gray-10); }
+
+.qa-block {
+  background: var(--white);
+  padding: 4rem;
+  margin-top: 3.2rem;
+  border-top: 4px solid var(--glff-green);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+.qa-question {
+  font-family: var(--font-en);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--i3-gold);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.qa-question::before {
+  content: 'Q.';
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--glff-green);
+  font-family: var(--font-en);
+}
+.qa-question-ja {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: .04em;
+  line-height: 1.4;
+  margin-bottom: 2.4rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid var(--gray-eb);
+}
+.qa-answer-label {
+  font-family: var(--font-en);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--glff-green);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.qa-answer-label::before {
+  content: 'A.';
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+.qa-text {
+  font-size: 1.6rem;
+  line-height: 2;
+  letter-spacing: .04em;
+  color: var(--dark);
+  margin-bottom: 2rem;
+}
+.qa-text strong { color: var(--glff-green); font-weight: 700; }
+
+.qa-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+}
+.qa-point {
+  background: var(--i3-green-pale);
+  padding: 2rem 1.6rem;
+  border-radius: 4px;
+  text-align: center;
+}
+.qa-point-num {
+  font-family: var(--font-en);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--glff-green);
+  letter-spacing: .15em;
+  margin-bottom: .8rem;
+}
+.qa-point-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--dark);
+  letter-spacing: .04em;
+}
+
+/* ── DIAGRAMS ── */
+.diagram {
+  margin: 4rem auto;
+  max-width: 540px;
+  text-align: center;
+}
+.diagram svg { width: 100%; height: auto; display: block; }
+.diagram-caption {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--i3-green-dark);
+  letter-spacing: .04em;
+  line-height: 1.7;
+}
+.diagram svg text { font-family: var(--font-ja); font-weight: 700; fill: var(--dark); }
+.diagram svg .layer-label { font-size: 14px; font-weight: 700; }
+.diagram svg .layer-sub { font-size: 11px; font-weight: 400; fill: var(--i3-gray-60); }
+.diagram svg .center-label { font-size: 18px; font-weight: 800; }
+
+.diagram-vs {
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.vs-side {
+  background: var(--white);
+  padding: 2.4rem 1.6rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.vs-label {
+  font-family: var(--font-en);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: var(--i3-gray-60);
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+.vs-state {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  letter-spacing: .04em;
+}
+.vs-side.is-after { background: var(--i3-green-pale); }
+.vs-side.is-after .vs-label { color: var(--glff-green); }
+.vs-arrow { font-size: 3rem; color: var(--glff-green); font-weight: 800; }
+.diagram-cycle { max-width: 600px; }
+
+/* ── ROADMAP ── */
+#roadmap { background: var(--i3-warm); }
+
+.roadmap-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 6rem;
+  font-size: 1.6rem;
+  color: var(--i3-gray-60);
+  line-height: 2;
+  letter-spacing: .04em;
+}
+
+.roadmap-stage {
+  position: relative;
+  margin-top: 4rem;
+  padding: 4rem 0 7rem;
+}
+
+.roadmap-bg-arrow {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.roadmap-timeline {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+  padding-top: 6rem;
+}
+
+.roadmap-phase[data-phase="1"] { transform: translateY(120px); }
+.roadmap-phase[data-phase="2"] { transform: translateY(40px); }
+.roadmap-phase[data-phase="3"] { transform: translateY(-40px); }
+.roadmap-phase[data-phase="4"] { transform: translateY(-120px); }
+
+.roadmap-phase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.roadmap-marker {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8rem;
+  margin-bottom: 1.6rem;
+  position: relative;
+  z-index: 2;
+}
+.roadmap-content { order: 2; width: 100%; }
+.roadmap-spacer  { order: 3; display: none; }
+
+.roadmap-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--glff-green);
+  position: relative; z-index: 2;
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.6);
+}
+.roadmap-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--glff-green);
+}
+.roadmap-phase[data-phase="2"] .roadmap-dot { border-color: var(--i3-green-dark); }
+.roadmap-phase[data-phase="2"] .roadmap-dot::after { background: var(--i3-green-dark); }
+.roadmap-phase[data-phase="3"] .roadmap-dot { border-color: var(--i3-green-deep); }
+.roadmap-phase[data-phase="3"] .roadmap-dot::after { background: var(--i3-green-deep); }
+.roadmap-phase[data-phase="4"] .roadmap-dot { border-color: var(--i3-gold); }
+.roadmap-phase[data-phase="4"] .roadmap-dot::after { background: var(--i3-gold); }
+
+.roadmap-year {
+  font-family: var(--font-en);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--i3-green-deep);
+  letter-spacing: .08em;
+}
+
+.roadmap-card {
+  background: var(--white);
+  padding: 2.4rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roadmap-phase-num {
+  font-family: var(--font-en);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: var(--i3-gold);
+  margin-bottom: .6rem;
+}
+.roadmap-phase-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--glff-green);
+  letter-spacing: .04em;
+  margin-bottom: .4rem;
+}
+.roadmap-phase-period {
+  font-family: var(--font-en);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--i3-gray-60);
+  letter-spacing: .08em;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px dashed var(--gray-de);
+  width: 100%;
+}
+.roadmap-phase-state {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.7;
+  letter-spacing: .02em;
+  margin-bottom: 1.6rem;
+  min-height: 8rem;
+  text-align: center;
+}
+.roadmap-phase-state em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--glff-green);
+  background: linear-gradient(transparent 70%, rgba(74,177,52,0.18) 70%);
+  padding: 0 .15em;
+}
+.roadmap-phase[data-phase="2"] .roadmap-phase-state em { color: var(--i3-green-dark); background: linear-gradient(transparent 70%, rgba(53,122,36,0.18) 70%); }
+.roadmap-phase[data-phase="3"] .roadmap-phase-state em { color: var(--i3-green-deep); background: linear-gradient(transparent 70%, rgba(26,92,16,0.18) 70%); }
+.roadmap-phase[data-phase="4"] .roadmap-phase-state em { color: var(--i3-gold); background: linear-gradient(transparent 70%, rgba(200,156,63,0.22) 70%); }
+
+.roadmap-phase-list {
+  list-style: none;
+  font-size: 1.2rem;
+  color: var(--i3-gray-60);
+  line-height: 1.7;
+  letter-spacing: .02em;
+  text-align: left;
+  width: 100%;
+  padding-top: 1.4rem;
+  border-top: 1px dashed var(--gray-de);
+}
+.roadmap-phase-list li {
+  padding-left: 1.4rem;
+  position: relative;
+  margin-bottom: .5rem;
+}
+.roadmap-phase-list li::before {
+  content: '▸';
+  position: absolute; left: 0;
+  color: var(--glff-green);
+  font-size: 1rem;
+}
+.roadmap-phase[data-phase="2"] .roadmap-phase-list li::before { color: var(--i3-green-dark); }
+.roadmap-phase[data-phase="3"] .roadmap-phase-list li::before { color: var(--i3-green-deep); }
+.roadmap-phase[data-phase="4"] .roadmap-phase-list li::before { color: var(--i3-gold); }
+
+.roadmap-phase-icon { width: 56px; height: 56px; margin-bottom: 1.2rem; }
+.roadmap-phase-icon svg { width: 100%; height: 100%; }
+
+/* ── 2126 VISION ── */
+#vision-2126 {
+  background: linear-gradient(135deg, var(--i3-green-deep) 0%, var(--i3-green-dark) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 12rem 2.4rem;
+}
+#vision-2126 .sec-label { color: var(--i3-gold); justify-content: center; }
+#vision-2126 .sec-label::before { background: var(--i3-gold); }
+#vision-2126 .sec-title { color: #fff; }
+
+.vision-2126-text {
+  font-size: clamp(2rem, 2.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: .06em;
+  max-width: 720px;
+  margin: 4rem auto 0;
+}
+
+/* ── RESPONSIVE (merged) ── */
+@media (max-width: 960px) {
+  .qa-points { grid-template-columns: 1fr 1fr; }
+  .diagram-vs { grid-template-columns: 1fr; }
+  .vs-arrow { transform: rotate(90deg); }
+  .roadmap-timeline { grid-template-columns: repeat(2, 1fr); padding-top: 3rem; }
+  .roadmap-bg-arrow { display: none; }
+  .roadmap-phase[data-phase="1"],
+  .roadmap-phase[data-phase="2"],
+  .roadmap-phase[data-phase="3"],
+  .roadmap-phase[data-phase="4"] { transform: none; }
+  .roadmap-stage { padding: 2rem 0; }
+}
+@media (max-width: 600px) {
+  .qa-block { padding: 2.4rem; }
+  .qa-points { grid-template-columns: 1fr; }
+  .roadmap-timeline { grid-template-columns: 1fr; }
+}
   </style>
 </head>
 <body>
@@ -870,8 +1505,10 @@
   <a href="#" class="nav-logo">WCO</a>
   <ul class="nav-links">
     <li><a href="#concept">About</a></li>
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="#values">Values</a></li>
+    <li><a href="#mission">MVV</a></li>
+    <li><a href="#worldcitizen">World Citizen</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#activities">Activities</a></li>
     <li><a href="#glff">GLFF</a></li>
     <li><a href="#join">Join</a></li>
   </ul>
@@ -933,63 +1570,204 @@
   </div>
 </section>
 
-<!-- ── MISSION ── -->
-<section id="mission" class="sec" style="background:var(--gray-f4);">
+<!-- ── MVV ── -->
+<section id="mission" class="sec" style="background:var(--white);padding-top:8rem;padding-bottom:8rem;">
   <div class="sec-inner">
-    <h3 class="glff-heading fade">Mission<span>ミッション・ビジョン</span></h3>
+    <h3 class="glff-heading fade">MVV<span>ミッション・ビジョン・バリュー</span></h3>
 
-    <div class="mission-grid">
+    <div class="mvv-intro fade">
+      <p class="mvv-intro-lead">私たちの存在意義を、3つの問いで定義します。</p>
+      <div class="mvv-intro-grid">
+        <div class="mvv-intro-item">
+          <span class="mvv-intro-label">Mission</span>
+          <span class="mvv-intro-ja">使命</span>
+          <p class="mvv-intro-desc">「なぜ存在するのか」——<br> WCOが社会に果たすべき根本的な役割。活動のすべての出発点です。</p>
+        </div>
+        <div class="mvv-intro-item">
+          <span class="mvv-intro-label">Vision</span>
+          <span class="mvv-intro-ja">未来像</span>
+          <p class="mvv-intro-desc">「どんな世界を目指すのか」——<br> ミッションを追い続けた先に実現したい、具体的な未来の姿です。</p>
+        </div>
+        <div class="mvv-intro-item">
+          <span class="mvv-intro-label">Values</span>
+          <span class="mvv-intro-ja">価値観</span>
+          <p class="mvv-intro-desc">「何を大切にするのか」—— <br>日々の判断や行動の基準となる、WCOメンバーが共有する信念です。</p>
+        </div>
+      </div>
+    </div>
 
-      <!-- Mission -->
-      <div class="mission-card is-mission fade fd1">
-        <p class="mission-role">Mission</p>
-        <p class="mission-label">私たちの使命</p>
-        <p class="mission-text">地球を美しく生きる人を増やす</p>
+    <div class="mvv-layout">
+
+      <!-- 左：テキスト -->
+      <div class="mvv-text-col">
+
+        <!-- Mission -->
+        <div class="mvv-block fade">
+          <span class="mvv-label">Mission</span>
+          <p class="mvv-tagline">地球を美しく生きる人を増やす</p>
+          <p class="mvv-desc">
+            誰もがすでに世界の一部であるという「気づき」を提供することで、自分らしさを発揮しながら世界に貢献する人を育てていきます。
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="mvv-block fade">
+          <span class="mvv-label">Vision</span>
+          <p class="mvv-tagline">自分らしさが、世界を幸せにする循環を。</p>
+          <p class="mvv-desc">
+            世界人としての生き方を提案し、一人ひとりの内側の充実が外側の世界へとポジティブに循環する。そんな個と地球が調和する未来を創ります
+          </p>
+        </div>
+
+        <!-- Values -->
+        <div class="mvv-block fade">
+          <span class="mvv-label">Values</span>
+          <p class="mvv-tagline">— Be a World Citizen —</p>
+
+          <div class="mvv-values">
+            <div class="mvv-value-item">
+              <p class="mvv-value-statement">世界を、自分ごとに生きる</p>
+              <p class="mvv-value-desc">地球の課題を他人事ではなく、自分の生き方として捉える。</p>
+            </div>
+            <div class="mvv-value-item">
+              <p class="mvv-value-statement">本物の出会いが、人を変える</p>
+              <p class="mvv-value-desc">心を動かす出会いと体験が、新しい行動を生み出す。</p>
+            </div>
+            <div class="mvv-value-item">
+              <p class="mvv-value-statement">食べることは、地球を生きること</p>
+              <p class="mvv-value-desc">日々の食の選択が、地球と未来への贈り物になる。</p>
+            </div>
+            <div class="mvv-value-item">
+              <p class="mvv-value-statement">美を求める心が、道を照らす</p>
+              <p class="mvv-value-desc">美しさへの感性が、調和ある世界への道を導く。</p>
+            </div>
+            <div class="mvv-value-item">
+              <p class="mvv-value-statement">青年が変われば、社会が変わる</p>
+              <p class="mvv-value-desc">若い世代の意識転換が、新しい時代の起点となる。</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- 矢印コネクター -->
-      <div class="mission-arrow fade fd2">
-        <svg viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-        <span>leads to</span>
-      </div>
+      <!-- 右：ピラミッド図 -->
+      <div class="mvv-pyramid-col fade">
+        <div class="mvv-pyramid">
+          <svg viewBox="0 0 500 570" xmlns="http://www.w3.org/2000/svg">
+            <!-- Mission tier (top) -->
+            <polygon points="250,20 184,176 316,176" fill="#4ab134"/>
 
-      <!-- Vision -->
-      <div class="mission-card is-vision fade fd3">
-        <p class="mission-role">Vision</p>
-        <p class="mission-label">目指す未来</p>
-        <p class="mission-text">世界人としての生き方を提案し、自分らしさが世界を幸せにする循環を</p>
+            <!-- Vision tier (middle) -->
+            <polygon points="180,182 320,182 380,338 120,338" fill="#4ab134"/>
+
+            <!-- Value tier (bottom, largest) -->
+            <polygon points="116,344 384,344 470,540 30,540" fill="#4ab134"/>
+
+            <!-- Mission text -->
+            <text x="250" y="85" text-anchor="middle" fill="#fff"
+                  font-family="Renner*,sans-serif" font-size="13" font-weight="700" letter-spacing="0.5">Mission</text>
+            <text x="250" y="112" text-anchor="middle" fill="rgba(255,255,255,0.95)"
+                  font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="500">地球を</text>
+            <text x="250" y="130" text-anchor="middle" fill="rgba(255,255,255,0.95)"
+                  font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="500">美しく生きる人を</text>
+            <text x="250" y="150" text-anchor="middle" fill="rgba(255,255,255,0.95)"
+                  font-family="'Noto Sans JP',sans-serif" font-size="11" font-weight="500">増やす</text>
+
+            <!-- Vision text -->
+            <text x="250" y="245" text-anchor="middle" fill="#fff"
+                  font-family="Renner*,sans-serif" font-size="22" font-weight="700" letter-spacing="1">Vision</text>
+            <text x="250" y="278" text-anchor="middle" fill="rgba(255,255,255,0.95)"
+                  font-family="'Noto Sans JP',sans-serif" font-size="12" font-weight="500">自分らしさが世界を幸せにする循環を</text>
+
+            <!-- Value text -->
+            <text x="250" y="428" text-anchor="middle" fill="#fff"
+                  font-family="Renner*,sans-serif" font-size="32" font-weight="700" letter-spacing="2">Values</text>
+            <text x="250" y="468" text-anchor="middle" fill="rgba(255,255,255,0.95)"
+                  font-family="Renner*,sans-serif" font-size="15" font-weight="500" letter-spacing="0.5">— Be a World Citizen —</text>
+          </svg>
+        </div>
       </div>
 
     </div>
+
   </div>
 </section>
 
-<!-- ── VALUES ── -->
-<section id="values" class="sec">
+<!-- ── ACTIVITIES ── -->
+<section id="activities" class="sec" style="background:var(--glff-pale);">
   <div class="sec-inner">
-    <h3 class="glff-heading fade">Values<span>大切にしていること</span></h3>
+    <h3 class="glff-heading fade">Activities<span>主な活動</span></h3>
 
-    <div class="values-wrap">
-      <div class="value-row fade fd1">
-        <span class="value-num">01</span>
-        <span class="value-text">世界を、自分ごとに生きる</span>
+    <div class="pillars-grid">
+
+      <div class="pillar-card fade fd1">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 5.5-8 9H9c.17-1.35.52-2.67 1-3.9C11.63 6.08 13 4.11 13 2c0 0-3 2-3 6-1.44.98-2.71 2.19-3.78 3.56A24.23 24.23 0 0 1 5 8C5 8 2 10 2 14c.04-.17 3-5 7-5h.5C8.37 9.03 6.82 4.5 4 4c0 0 2 3.5 2 7.5L5 12s-1 4 0 8h1l.44-1.04A5.85 5.85 0 0 0 8 20a5.99 5.99 0 0 0 3.94-1.46C13.17 19.6 14.5 20 16 20h.5c2.35-5.52 3.5-12-.5-12z"/>
+          </svg>
+        </div>
+        <h4 class="pillar-card-title">サステナブルな<br>ライフスタイルの提案</h4>
+        <p class="pillar-card-desc">SNSを通して自然栽培を含めたライフスタイルの選択肢を世界へ広めます。</p>
       </div>
-      <div class="value-row fade fd2">
-        <span class="value-num">02</span>
-        <span class="value-text">本物の出会いが、人を変える</span>
+
+      <div class="pillar-card fade fd2">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+        </div>
+        <h4 class="pillar-card-title">GLFF支援</h4>
+        <p class="pillar-card-desc">マルシェや講演会を通じ、体に良い食と「良いもの」を求める仲間が繋がる場を創出。</p>
       </div>
-      <div class="value-row fade fd3">
-        <span class="value-num">03</span>
-        <span class="value-text">食べることは、地球を生きること</span>
+
+      <div class="pillar-card fade fd3">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+        </div>
+        <h4 class="pillar-card-title">グローバル人材育成</h4>
+        <p class="pillar-card-desc">外国人ゲストとの農業体験を通じ、多様性と土の尊さを学ぶ次世代リーダーを育成。</p>
       </div>
-      <div class="value-row fade fd4">
-        <span class="value-num">04</span>
-        <span class="value-text">美を求める心が、道を照らす</span>
+
+    </div>
+
+    <div class="activities-divider fade"></div>
+
+    <div class="activities-grid">
+
+      <div class="activity-item fade fd1">
+        <div class="activity-num">01</div>
+        <div class="activity-body">
+          <p class="activity-title">GLFFマルシェ・ワークショップ</p>
+          <p class="activity-desc">オーガニック＆ナチュラルをテーマに全国7都市で開催。体に良い食と「良いもの」が集まる場をつくります。</p>
+        </div>
       </div>
-      <div class="value-row fade fd5">
-        <span class="value-num">05</span>
-        <span class="value-text">青年が変われば、社会が変わる</span>
+
+      <div class="activity-item fade fd2">
+        <div class="activity-num">02</div>
+        <div class="activity-body">
+          <p class="activity-title">SNS・啓発活動</p>
+          <p class="activity-desc">自然栽培を含めたライフスタイルをSNSで発信し、「地球を美しく生きる」選択肢を国内外へ広めます。</p>
+        </div>
       </div>
+
+      <div class="activity-item fade fd3">
+        <div class="activity-num">03</div>
+        <div class="activity-body">
+          <p class="activity-title">グローバル農業体験プログラム</p>
+          <p class="activity-desc">外国人ゲストと農業を共に体験し、多様性と土の尊さ、食の本質を学ぶ国際交流プログラムです。</p>
+        </div>
+      </div>
+
+      <div class="activity-item fade fd4">
+        <div class="activity-num">04</div>
+        <div class="activity-body">
+          <p class="activity-title">次世代リーダー育成・研修</p>
+          <p class="activity-desc">若者が主体となりセミナー・交流会を企画・運営。世界的視野をもつ次世代リーダーを輩出します。</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1031,7 +1809,7 @@
           </div>
           <div class="event-badge">予定</div>
         </div>
-        <div class="event-item special">
+        <div class="event-item">
           <div>
             <div class="event-date">2026 秋</div>
             <div class="event-city">台湾</div>
@@ -1042,7 +1820,436 @@
     </div>
   </div>
 </section>
+<!-- ── 世界人 Q&A (from index3) ── -->
+<section id="worldcitizen" class="sec answer-section">
+  <div class="sec-inner">
+    <p class="sec-label fade">Discussion 01</p>
+    <h2 class="sec-title fade">
+      What is "World Citizen"?
+      <span class="sec-title-ja">「世界人」って何？</span>
+    </h2>
 
+    <div class="qa-block fade">
+      <p class="qa-question">Question</p>
+      <p class="qa-question-ja">「世界人」って、何ですか？</p>
+
+      <p class="qa-answer-label">Answer / 答え</p>
+      <p class="qa-text">
+        世界人とは、<strong>国籍・人種・宗教・職業といった属性を超えて、地球全体を「自分の家」として捉え、すべての存在とのつながりの中で生きる人</strong>のこと。<br><br>
+        ここで重要なのは、「世界を旅する人」でも「複数の言語を話す人」でもないということ。世界人とは、<strong>地理的な広さの話ではなく、意識の深さ</strong>の話です。
+      </p>
+
+      <div class="diagram diagram-circles">
+        <svg viewBox="0 0 400 400">
+          <circle cx="200" cy="200" r="180" fill="rgba(74,177,52,0.04)" stroke="rgba(74,177,52,0.35)" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="200" y="34" text-anchor="middle" class="layer-label" fill="#357a24">世界・地球</text>
+          <circle cx="200" cy="200" r="135" fill="rgba(74,177,52,0.08)" stroke="rgba(74,177,52,0.5)" stroke-width="1"/>
+          <text x="200" y="78" text-anchor="middle" class="layer-label" fill="#357a24">国・社会</text>
+          <circle cx="200" cy="200" r="90" fill="rgba(74,177,52,0.14)" stroke="rgba(74,177,52,0.65)" stroke-width="1"/>
+          <text x="200" y="124" text-anchor="middle" class="layer-label" fill="#357a24">家族・地域</text>
+          <circle cx="200" cy="200" r="42" fill="#4ab134" stroke="#1a5c10" stroke-width="2"/>
+          <text x="200" y="208" text-anchor="middle" class="center-label" fill="#fff">自分</text>
+          <g opacity="0.4">
+            <path d="M280 200 L320 200" stroke="#4ab134" stroke-width="2" marker-end="url(#arrow-out)"/>
+            <path d="M120 200 L80 200" stroke="#4ab134" stroke-width="2" marker-end="url(#arrow-out)"/>
+            <path d="M200 280 L200 320" stroke="#4ab134" stroke-width="2" marker-end="url(#arrow-out)"/>
+            <path d="M200 120 L200 80" stroke="#4ab134" stroke-width="2" marker-end="url(#arrow-out)"/>
+          </g>
+          <defs>
+            <marker id="arrow-out" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L0,8 L8,4 z" fill="#4ab134"/>
+            </marker>
+          </defs>
+        </svg>
+        <p class="diagram-caption">「自分」の感覚を、家族から地域、国、世界まで広げて感じられる人 = 世界人</p>
+      </div>
+
+      <div class="qa-points">
+        <div class="qa-point">
+          <p class="qa-point-num">01</p>
+          <p class="qa-point-text">属性を超えて<br>地球を家とする</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">02</p>
+          <p class="qa-point-text">日常の中に<br>世界を感じる</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">03</p>
+          <p class="qa-point-text">自分の幸せが<br>世界の幸せに繋がる</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="sec">
+  <div class="sec-inner">
+    <p class="sec-label fade">Discussion 02</p>
+    <h2 class="sec-title fade">
+      Why "World Citizen"?
+      <span class="sec-title-ja">なんで「世界人」なのか？</span>
+    </h2>
+
+    <div class="qa-block fade">
+      <p class="qa-question">Question</p>
+      <p class="qa-question-ja">なぜ今、「世界人」という生き方が必要なのか？</p>
+
+      <p class="qa-answer-label">Answer / 答え</p>
+      <p class="qa-text">
+        いま世界は、<strong>各国の分断と対立、環境破壊、孤立</strong>といった問題に直面しています。これらは国境を超えた問題であり、<strong>一国・一民族では解決できない</strong>。けれど多くの人は、自分の幸せと世界の課題を切り離して考えてしまっています。
+      </p>
+
+      <div class="diagram diagram-vs">
+        <div class="vs-side is-before">
+          <p class="vs-label">Before / 従来</p>
+          <svg viewBox="0 0 200 130">
+            <circle cx="55" cy="65" r="38" fill="rgba(74,177,52,0.18)" stroke="#4ab134" stroke-width="1.5"/>
+            <text x="55" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#357a24">自分</text>
+            <circle cx="145" cy="65" r="38" fill="rgba(200,156,63,0.18)" stroke="#c89c3f" stroke-width="1.5"/>
+            <text x="145" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="#8b6620">世界</text>
+            <line x1="93" y1="65" x2="107" y2="65" stroke="#999" stroke-width="2" stroke-dasharray="3 3"/>
+          </svg>
+          <p class="vs-state">分離している</p>
+        </div>
+        <div class="vs-arrow">→</div>
+        <div class="vs-side is-after">
+          <p class="vs-label">After / 世界人</p>
+          <svg viewBox="0 0 200 130">
+            <circle cx="80" cy="65" r="42" fill="rgba(74,177,52,0.25)" stroke="#4ab134" stroke-width="1.5"/>
+            <circle cx="120" cy="65" r="42" fill="rgba(200,156,63,0.25)" stroke="#c89c3f" stroke-width="1.5"/>
+            <text x="50" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#357a24">自分</text>
+            <text x="150" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#8b6620">世界</text>
+            <text x="100" y="70" text-anchor="middle" font-size="14" font-weight="800" fill="#1a5c10">＝</text>
+          </svg>
+          <p class="vs-state">重なって、ひとつに</p>
+        </div>
+      </div>
+
+      <p class="qa-text" style="margin-top:3rem;">
+        WCOが「世界人」を掲げるのは、<strong>個人の幸せと地球の調和を矛盾なく結びつける生き方</strong>を、いまこそ提案する必要があるからです。我慢して社会のために生きるのではなく、自分らしさを発揮することが、そのまま世界の幸せになる——そんな循環を取り戻すこと。
+      </p>
+
+      <div class="qa-points">
+        <div class="qa-point">
+          <p class="qa-point-num">背景 01</p>
+          <p class="qa-point-text">課題が国境を<br>超えている</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">背景 02</p>
+          <p class="qa-point-text">分断と孤立の<br>時代</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">背景 03</p>
+          <p class="qa-point-text">「自分」と「世界」を<br>つなげる必要</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="identity" class="sec answer-section">
+  <div class="sec-inner">
+    <p class="sec-label fade">Discussion 03</p>
+    <h2 class="sec-title fade">
+      What is "Self"?
+      <span class="sec-title-ja">「自分らしさ」とは何を指すか？</span>
+    </h2>
+
+    <div class="qa-block fade">
+      <p class="qa-question">Question</p>
+      <p class="qa-question-ja">「自分らしさ」とは、具体的に何を指すのか？</p>
+
+      <p class="qa-answer-label">Answer / 答え</p>
+      <p class="qa-text">
+        ここでいう「自分らしさ」とは、表面的な好みや個性ではありません。それは<strong>「自身の内なる本質を整えたとき、自然と滲み出てくる在り方」</strong>のこと。<br><br>
+        他者に合わせて装う「自分」でも、SNSで見せる「自分」でもない。心身を整え、自然や他者との関係を心地よく結んだとき、そこに残る「素の自分」——その人にしか持っていない<strong>本質的な感性・価値観・才能</strong>です。
+      </p>
+
+      <div class="diagram diagram-layers">
+        <svg viewBox="0 0 480 360">
+          <circle cx="240" cy="180" r="155" fill="rgba(200,156,63,0.08)" stroke="#c89c3f" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="240" y="40" text-anchor="middle" font-size="15" font-weight="800" fill="#8b6620">使命 — Mission</text>
+          <text x="240" y="58" text-anchor="middle" font-size="11" fill="#666">世界に与えうる独自の貢献</text>
+          <circle cx="240" cy="180" r="105" fill="rgba(74,177,52,0.1)" stroke="#4ab134" stroke-width="1.5"/>
+          <text x="240" y="92" text-anchor="middle" font-size="14" font-weight="800" fill="#357a24">才能 — Talent</text>
+          <text x="240" y="108" text-anchor="middle" font-size="11" fill="#666">独自の感性・力</text>
+          <circle cx="240" cy="180" r="55" fill="#4ab134" stroke="#1a5c10" stroke-width="2"/>
+          <text x="240" y="178" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">本質</text>
+          <text x="240" y="196" text-anchor="middle" font-size="11" font-weight="500" fill="rgba(255,255,255,0.85)">Essence</text>
+          <g opacity="0.5">
+            <path d="M 295 180 Q 320 180 340 180" stroke="#4ab134" stroke-width="1.5" fill="none" marker-end="url(#arrow-grow)"/>
+            <text x="370" y="184" font-size="10" font-weight="600" fill="#357a24">滲み出る</text>
+          </g>
+          <defs>
+            <marker id="arrow-grow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L6,3 z" fill="#4ab134"/>
+            </marker>
+          </defs>
+        </svg>
+        <p class="diagram-caption">中心の「本質」を整えると、才能が育ち、使命へと外側に開いていく</p>
+      </div>
+
+      <div class="qa-points">
+        <div class="qa-point">
+          <p class="qa-point-num">Layer 01</p>
+          <p class="qa-point-text"><strong>本質</strong><br>取り繕わない<br>素の在り方</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">Layer 02</p>
+          <p class="qa-point-text"><strong>才能</strong><br>その人にしかない<br>独自の感性・力</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">Layer 03</p>
+          <p class="qa-point-text"><strong>使命</strong><br>世界に与えうる<br>独自の貢献</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="empathy" class="sec">
+  <div class="sec-inner">
+    <p class="sec-label fade">Discussion 04 / 05</p>
+    <h2 class="sec-title fade">
+      Universal Empathy.
+      <span class="sec-title-ja">共感の核心と、内外への広がり</span>
+    </h2>
+
+    <div class="qa-block fade">
+      <p class="qa-question">Question</p>
+      <p class="qa-question-ja">メンバーが一番共感しているポイントは？</p>
+
+      <p class="qa-answer-label">Answer / 答え</p>
+      <p class="qa-text">
+        多くのメンバーが共感するのは、<strong>「自身の内発的な心の充実が、自然と外側へ循環する」</strong>という感覚です。何かを我慢して社会貢献するのではなく、<strong>自分が心地よく生きること自体が世界への貢献になる</strong>——この循環の感覚こそが、WCOの根底にある体験です。
+      </p>
+
+      <div class="diagram diagram-cycle">
+        <svg viewBox="0 0 600 320">
+          <circle cx="170" cy="160" r="95" fill="rgba(74,177,52,0.12)" stroke="#4ab134" stroke-width="2"/>
+          <text x="170" y="148" text-anchor="middle" font-size="18" font-weight="800" fill="#357a24">内</text>
+          <text x="170" y="172" text-anchor="middle" font-size="13" font-weight="600" fill="#4ab134">心身を整える</text>
+          <text x="170" y="190" text-anchor="middle" font-size="11" fill="#666">自然と心の調和</text>
+          <circle cx="430" cy="160" r="95" fill="rgba(200,156,63,0.15)" stroke="#c89c3f" stroke-width="2"/>
+          <text x="430" y="148" text-anchor="middle" font-size="18" font-weight="800" fill="#8b6620">外</text>
+          <text x="430" y="172" text-anchor="middle" font-size="13" font-weight="600" fill="#c89c3f">世界へ循環</text>
+          <text x="430" y="190" text-anchor="middle" font-size="11" fill="#666">人と地球への貢献</text>
+          <path d="M 240 110 Q 300 60 360 110" stroke="#4ab134" stroke-width="2.5" fill="none" marker-end="url(#cyc-arrow-r)"/>
+          <text x="300" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#357a24">滲み出る</text>
+          <path d="M 360 210 Q 300 260 240 210" stroke="#c89c3f" stroke-width="2.5" fill="none" marker-end="url(#cyc-arrow-l)"/>
+          <text x="300" y="278" text-anchor="middle" font-size="12" font-weight="700" fill="#8b6620">満たされる</text>
+          <defs>
+            <marker id="cyc-arrow-r" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L0,8 L9,4 z" fill="#4ab134"/>
+            </marker>
+            <marker id="cyc-arrow-l" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L0,8 L9,4 z" fill="#c89c3f"/>
+            </marker>
+          </defs>
+        </svg>
+        <p class="diagram-caption">「内」が満ちれば「外」へ流れ、その循環がまた自身を満たしていく</p>
+      </div>
+
+      <p class="qa-text" style="margin-top:3rem;">
+        広く共感されるためには、<strong>宗教的な言葉を使わず、誰もが日常で実感できる言葉</strong>に翻訳することが重要です。「浄霊」「自然農法」「美」も、そのまま伝えるのではなく——<strong>「整える」「育てる」「感じる」</strong>という普遍的な体験として表現していく。
+      </p>
+
+      <div class="qa-points">
+        <div class="qa-point">
+          <p class="qa-point-num">共感の核 01</p>
+          <p class="qa-point-text">内側の充実が<br>外側へ循環する</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">共感の核 02</p>
+          <p class="qa-point-text">無理せず<br>世界に貢献できる</p>
+        </div>
+        <div class="qa-point">
+          <p class="qa-point-num">共感の核 03</p>
+          <p class="qa-point-text">体験を通じた<br>本物の気づき</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ── ROADMAP ── -->
+<section id="roadmap" class="sec">
+  <div class="sec-inner">
+    <p class="sec-label fade">100-Year Roadmap</p>
+    <h2 class="sec-title fade">
+      Road to 2126 Vision
+      <span class="sec-title-ja">100年後を描く、4つのフェーズ</span>
+    </h2>
+
+    <p class="roadmap-intro fade">
+      2026年の今、私たちは「世界人」の種を蒔いています。<br>
+      その種が芽吹き、花咲き、実をつけ、再び世界へと広がっていく。<br>
+      100年という長い時間軸で、WCOが描く未来を提示します。
+    </p>
+
+    <div class="roadmap-stage fade">
+      <svg class="roadmap-bg-arrow" viewBox="0 0 1000 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="roadmap-arrow-grad" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#4ab134" stop-opacity="0.08"/>
+            <stop offset="50%"  stop-color="#4ab134" stop-opacity="0.20"/>
+            <stop offset="100%" stop-color="#c89c3f" stop-opacity="0.36"/>
+          </linearGradient>
+        </defs>
+        <path d="M 40 280 L 760 110 L 760 50 L 970 130 L 760 210 L 760 150 L 40 320 Z" fill="url(#roadmap-arrow-grad)"/>
+      </svg>
+
+      <div class="roadmap-timeline">
+
+        <div class="roadmap-phase fade" data-phase="1">
+          <div class="roadmap-content">
+            <div class="roadmap-card">
+              <span class="roadmap-phase-icon">
+                <svg viewBox="0 0 60 60">
+                  <ellipse cx="30" cy="36" rx="14" ry="10" fill="#8b6620"/>
+                  <path d="M30 28 Q26 22 30 16 Q34 22 30 28 Z" fill="#4ab134"/>
+                  <line x1="30" y1="28" x2="30" y2="36" stroke="#357a24" stroke-width="2"/>
+                </svg>
+              </span>
+              <p class="roadmap-phase-num">Phase 01 — 種を蒔く</p>
+              <h3 class="roadmap-phase-title">Sowing Seeds</h3>
+              <p class="roadmap-phase-period">2026 — 2030</p>
+              <p class="roadmap-phase-state"><em>7都市＋台湾</em>でGLFFが定着。<em>年1万人</em>の若者が「地球を美しく生きる」体験に触れる。</p>
+              <ul class="roadmap-phase-list">
+                <li>WCO会員 500人 → 5,000人規模</li>
+                <li>GLFFが7都市＋台湾で年5回定着</li>
+                <li>大学サークル・ゼミで話題に</li>
+                <li>SNSで「世界人体験記」が拡大</li>
+              </ul>
+            </div>
+          </div>
+          <div class="roadmap-marker">
+            <span class="roadmap-dot"></span>
+            <span class="roadmap-year">2030</span>
+          </div>
+          <div class="roadmap-spacer"></div>
+        </div>
+
+        <div class="roadmap-phase fade" data-phase="2">
+          <div class="roadmap-content">
+            <div class="roadmap-card">
+              <span class="roadmap-phase-icon">
+                <svg viewBox="0 0 60 60">
+                  <ellipse cx="30" cy="50" rx="14" ry="6" fill="#8b6620" opacity="0.5"/>
+                  <line x1="30" y1="50" x2="30" y2="20" stroke="#357a24" stroke-width="2.5"/>
+                  <path d="M30 30 Q22 26 18 18 Q26 22 30 30 Z" fill="#4ab134"/>
+                  <path d="M30 30 Q38 26 42 18 Q34 22 30 30 Z" fill="#6bc44a"/>
+                  <circle cx="30" cy="14" r="3" fill="#4ab134"/>
+                </svg>
+              </span>
+              <p class="roadmap-phase-num">Phase 02 — 芽が出る</p>
+              <h3 class="roadmap-phase-title">Sprouting</h3>
+              <p class="roadmap-phase-period">2030 — 2050</p>
+              <p class="roadmap-phase-state">GLFFが<em>世界20都市</em>へ。<em>5万人</em>のコミュニティと、教育・行政・企業の連携が広がる。</p>
+              <ul class="roadmap-phase-list">
+                <li>WCO関連コミュニティ 5万人規模</li>
+                <li>海外5地域に支部、選択科目「世界人学」誕生</li>
+                <li>「ワールドヴィレッジ」が稼働</li>
+                <li>企業の経営指標に「世界人指標」採用</li>
+              </ul>
+            </div>
+          </div>
+          <div class="roadmap-marker">
+            <span class="roadmap-dot"></span>
+            <span class="roadmap-year">2050</span>
+          </div>
+          <div class="roadmap-spacer"></div>
+        </div>
+
+        <div class="roadmap-phase fade" data-phase="3">
+          <div class="roadmap-content">
+            <div class="roadmap-card">
+              <span class="roadmap-phase-icon">
+                <svg viewBox="0 0 60 60">
+                  <line x1="30" y1="55" x2="30" y2="30" stroke="#357a24" stroke-width="2.5"/>
+                  <path d="M30 40 Q22 36 16 30 Q24 32 30 40 Z" fill="#4ab134"/>
+                  <circle cx="30" cy="20" r="7" fill="#f8b4d9"/>
+                  <circle cx="22" cy="26" r="7" fill="#f8b4d9"/>
+                  <circle cx="38" cy="26" r="7" fill="#f8b4d9"/>
+                  <circle cx="25" cy="14" r="6" fill="#fce0ec"/>
+                  <circle cx="35" cy="14" r="6" fill="#fce0ec"/>
+                  <circle cx="30" cy="22" r="4" fill="#c89c3f"/>
+                </svg>
+              </span>
+              <p class="roadmap-phase-num">Phase 03 — 花が咲く</p>
+              <h3 class="roadmap-phase-title">Blooming</h3>
+              <p class="roadmap-phase-period">2050 — 2100</p>
+              <p class="roadmap-phase-state">世界<em>100都市以上</em>に拠点。「世界人指数」が<em>GDPと並列</em>の国際指標として認知される。</p>
+              <ul class="roadmap-phase-list">
+                <li>世界100都市以上にWCO関連拠点</li>
+                <li>学校教育に必修科目「世界人」導入</li>
+                <li>食・住・医療に自然調和が標準実装</li>
+                <li>アート・美が駅・病院・職場に統合</li>
+              </ul>
+            </div>
+          </div>
+          <div class="roadmap-marker">
+            <span class="roadmap-dot"></span>
+            <span class="roadmap-year">2100</span>
+          </div>
+          <div class="roadmap-spacer"></div>
+        </div>
+
+        <div class="roadmap-phase fade" data-phase="4">
+          <div class="roadmap-content">
+            <div class="roadmap-card">
+              <span class="roadmap-phase-icon">
+                <svg viewBox="0 0 60 60">
+                  <line x1="30" y1="55" x2="30" y2="20" stroke="#357a24" stroke-width="2.5"/>
+                  <path d="M30 30 Q20 25 14 16 Q24 20 30 30 Z" fill="#4ab134"/>
+                  <path d="M30 38 Q40 34 46 25 Q36 28 30 38 Z" fill="#6bc44a"/>
+                  <circle cx="22" cy="42" r="8" fill="#c89c3f"/>
+                  <circle cx="38" cy="46" r="9" fill="#d4a850"/>
+                  <circle cx="30" cy="36" r="7" fill="#e0b860"/>
+                  <ellipse cx="22" cy="40" rx="2" ry="1.5" fill="#fff" opacity="0.5"/>
+                  <ellipse cx="38" cy="44" rx="2.5" ry="1.5" fill="#fff" opacity="0.5"/>
+                </svg>
+              </span>
+              <p class="roadmap-phase-num">Phase 04 — 実を結ぶ</p>
+              <h3 class="roadmap-phase-title">Bearing Fruit</h3>
+              <p class="roadmap-phase-period">2100 — 2126</p>
+              <p class="roadmap-phase-state">「世界人」という言葉が<em>消える</em>。それが当たり前の感覚に。<em>次の百年計画</em>が次世代の手で描き始められる。</p>
+              <ul class="roadmap-phase-list">
+                <li>「世界人」が日常用語として消滅（＝完全に内面化）</li>
+                <li>幸福指数・地球健康指数が史上最高水準</li>
+                <li>国境は地理的記号、移動・労働が地球規模で自由</li>
+                <li>次世代が「2226年計画」を構想開始</li>
+              </ul>
+            </div>
+          </div>
+          <div class="roadmap-marker">
+            <span class="roadmap-dot"></span>
+            <span class="roadmap-year">2126</span>
+          </div>
+          <div class="roadmap-spacer"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2126 VISION ── -->
+<section id="vision-2126">
+  <div class="sec-inner">
+    <p class="sec-label fade">Vision for 2126</p>
+    <h2 class="sec-title fade">
+      100 Years Later.
+      <span class="sec-title-ja" style="color:rgba(255,255,255,0.7);">2126年、私たちが描く世界</span>
+    </h2>
+    <p class="vision-2126-text fade">
+      地球のどこに生まれても、<br>
+      自分らしく生きることが、自然に世界の幸せに繋がっている。<br><br>
+      国境は地理的な記号でしかなく、<br>
+      すべての人が「世界人」として暮らしている。<br><br>
+      そんな日常が、当たり前になっている世界。
+    </p>
+  </div>
+</section>
 <!-- ── JOIN ── -->
 <section id="join" class="sec">
   <div class="sec-inner">
@@ -1086,6 +2293,7 @@
   </div>
 </section>
 
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
@@ -1104,11 +2312,15 @@
             <li><a href="#concept">WCOとは</a></li>
             <li><a href="#mission">ミッション</a></li>
             <li><a href="#values">バリュー</a></li>
+            <li><a href="#worldcitizen">世界人とは</a></li>
+            <li><a href="#roadmap">ロードマップ</a></li>
+            <li><a href="#vision-2126">2126ビジョン</a></li>
           </ul>
         </div>
         <div>
           <h4>Activity</h4>
           <ul>
+            <li><a href="#activities">主な活動</a></li>
             <li><a href="#glff">GLFF</a></li>
             <li><a href="https://greenlifefoodfesta.com" target="_blank">GLFFサイト</a></li>
           </ul>
