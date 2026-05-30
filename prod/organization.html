@@ -10,7 +10,8 @@
 <style>
 /* ── Hero ── */
 .org-hero{padding:160px 24px 96px;background:var(--cream);text-align:center;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center}
-.org-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(115,155,101,.12) 0%,transparent 70%)}
+.org-hero::before{content:"";position:absolute;inset:0;background:url("assets/hero.jpg") center/cover no-repeat;opacity:.13;z-index:0}
+.org-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,248,232,.82) 0%,rgba(255,248,232,.92) 60%,rgba(255,248,232,1) 100%);z-index:0}
 .org-hero-content{position:relative;z-index:1}
 .org-hero h1{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;color:var(--green);font-size:52px;line-height:1.45;margin:16px 0 20px}
 .org-hero p{font-size:16px;font-weight:700;color:var(--muted);line-height:2;max-width:560px;margin:0 auto}
