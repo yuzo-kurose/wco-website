@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About us | 一般社団法人WCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Hero ── */
+.org-hero{padding:160px 24px 96px;background:var(--cream);text-align:center;position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;justify-content:center}
+.org-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(115,155,101,.12) 0%,transparent 70%)}
+.org-hero-content{position:relative;z-index:1}
+.org-hero h1{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;color:var(--green);font-size:52px;line-height:1.45;margin:16px 0 20px}
+.org-hero p{font-size:16px;font-weight:700;color:var(--muted);line-height:2;max-width:560px;margin:0 auto}
+
+/* ── 法人概要テーブル ── */
+.org-table-wrap{max-width:800px;margin:56px auto 0}
+.org-table{width:100%;border-collapse:collapse}
+.org-table tr{border-bottom:1px solid var(--line)}
+.org-table tr:first-child{border-top:1px solid var(--line)}
+.org-table th{width:200px;padding:22px 28px;text-align:left;font-size:14px;font-weight:900;color:var(--green);background:var(--mint);vertical-align:top;white-space:nowrap}
+.org-table td{padding:22px 28px;font-size:15px;font-weight:700;color:var(--text);line-height:1.9;vertical-align:top}
+
+/* ── 代表挨拶 ── */
+.greeting{background:var(--cream)}
+.greeting-inner{display:grid;grid-template-columns:280px 1fr;gap:72px;align-items:start;max-width:960px;margin:56px auto 0}
+.greeting-photo{border-radius:28px;overflow:hidden;background:var(--mint);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;color:var(--green2);font-size:14px;font-weight:700}
+.greeting-photo img{width:100%;height:100%;object-fit:cover}
+.greeting-body h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:26px;color:var(--green);margin:0 0 24px;line-height:1.6}
+.greeting-body p{font-size:15px;font-weight:700;color:var(--muted);line-height:2.2;margin:0 0 18px}
+.greeting-sign{margin-top:32px;padding-top:28px;border-top:1px solid var(--line)}
+.greeting-sign p{margin:0;font-size:15px;font-weight:700;color:var(--text)}
+.greeting-sign b{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:24px;color:var(--green);display:block;margin-top:6px}
+
+/* ── 事業内容 ── */
+.business-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.business-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:36px 28px;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s}
+.business-card:hover{transform:translateY(-6px);box-shadow:0 28px 56px rgba(47,91,53,.16)}
+.business-icon{width:60px;height:60px;border-radius:18px;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 0 20px;font-size:26px}
+.business-card h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:19px;color:var(--green);margin:0 0 12px}
+.business-card p{font-size:15px;color:var(--muted);font-weight:700;line-height:1.9;margin:0}
+
+/* ── お問い合わせCTA ── */
+.org-cta{background:linear-gradient(135deg,#1a5c10 0%,#357a24 100%);color:#fff;padding:96px 24px;text-align:center}
+.org-cta h2{color:#fff;font-size:38px;margin:0 0 20px}
+.org-cta p{color:rgba(255,255,255,.82);font-weight:700;line-height:2;max-width:560px;margin:0 auto 36px}
+.org-cta .btn{margin:0 auto}
+
+/* ── Responsive ── */
+@media(max-width:980px){
+  .org-hero{padding:120px 20px 72px;min-height:320px}
+  .org-hero h1{font-size:36px}
+  .org-hero p{font-size:15px}
+  .org-table th{width:140px;padding:18px 20px;font-size:13px}
+  .org-table td{padding:18px 20px}
+  .greeting-inner{grid-template-columns:1fr;gap:40px}
+  .greeting-photo{max-width:280px;aspect-ratio:3/4;margin:0 auto}
+  .business-grid{grid-template-columns:1fr 1fr}
+  .org-cta{padding:64px 20px}
+  .org-cta h2{font-size:28px}
+}
+@media(max-width:620px){
+  .business-grid{grid-template-columns:1fr}
+  .org-table{display:block}
+  .org-table tr{display:block;padding:0}
+  .org-table th,.org-table td{display:block;width:100%;padding:12px 16px;white-space:normal}
+  .org-table th{background:var(--mint);font-size:13px;padding-bottom:4px;border-bottom:none}
+  .org-table td{padding-top:6px}
+}
+@media(max-width:480px){
+  .org-hero h1{font-size:28px}
+  .greeting-body h3{font-size:20px}
+  .org-cta h2{font-size:22px}
+  .org-cta p{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div id="loader" role="status" aria-label="読み込み中">
+  <div class="loader-inner">
+    <div class="loader-wco">WCO</div>
+    <div class="loader-tagline">World Citizen Organization</div>
+    <div class="loader-track"><div class="loader-fill"></div></div>
+  </div>
+</div>
+
+<header><div class="header-inner"><a class="brand" href="index.html"><b>WCO</b><span>World Citizen Organisation</span></a><nav><a href="index.html#about">WCOとは</a><a href="index.html#mvv">Vision/Mission</a><a href="index.html#actions">活動</a><a href="index.html#road100">Roadmap</a><a href="membership.html">Join</a><a href="organization.html" style="color:var(--green);font-weight:900">About us</a></nav><button class="menu-btn" aria-label="メニューを開く" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></header>
+
+<div class="side-overlay" onclick="toggleMenu()"></div>
+<aside class="side-menu">
+  <button class="side-close" aria-label="閉じる" onclick="toggleMenu()">✕</button>
+  <div class="side-brand"><b>WCO</b><span>World Citizen Organisation</span></div>
+  <nav class="side-nav">
+    <a href="index.html#about" onclick="toggleMenu()">WCOとは</a>
+    <a href="index.html#mvv" onclick="toggleMenu()">Vision / Mission</a>
+    <a href="index.html#actions" onclick="toggleMenu()">活動</a>
+    <a href="index.html#road100" onclick="toggleMenu()">Roadmap</a>
+    <a href="membership.html" onclick="toggleMenu()">Join</a>
+    <a href="organization.html" class="side-active" onclick="toggleMenu()">About us</a>
+    <a href="membership.html" class="side-join-btn">Join us →</a>
+  </nav>
+</aside>
+
+<main>
+
+<!-- Hero -->
+<section class="org-hero">
+  <div class="org-hero-content">
+    <p class="label center fade-up">ORGANIZATION</p>
+    <h1 class="fade-up" data-delay="1">法人概要</h1>
+    <p class="fade-up" data-delay="2">一般社団法人WCOの基本情報と活動についてご紹介します。</p>
+  </div>
+</section>
+
+<!-- 法人概要 -->
+<section class="section" style="background:#fff">
+  <div class="container">
+    <p class="label center fade-up">OVERVIEW</p>
+    <h2 class="center-title fade-up" data-delay="1">法人概要</h2>
+    <div class="org-table-wrap fade-up" data-delay="2">
+      <table class="org-table">
+        <tr>
+          <th>法人名</th>
+          <td>一般社団法人WCO<br><span style="font-size:13px;color:var(--muted)">World Citizen Organisation</span></td>
+        </tr>
+        <tr>
+          <th>設立年月日</th>
+          <td>2026年4月8日</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>〒630-1233<br>奈良県奈良市都祁吐山町920</td>
+        </tr>
+        <tr>
+          <th>代表者</th>
+          <td>代表理事　岸田 雄希</td>
+        </tr>
+        <tr>
+          <th>事業内容</th>
+          <td>
+            ・「世界人」としての生き方の普及・啓発活動<br>
+            ・Green Life Food Festa（GLFF）の企画・運営<br>
+            ・グローバル人材育成ワークショップの開催<br>
+            ・SNSを通じた情報発信・コミュニティ形成
+          </td>
+        </tr>
+        <tr>
+          <th>会費</th>
+          <td>個人賛助会員：年500円〜　／　法人賛助会員：年50,000円〜</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 代表挨拶 -->
+<section class="section greeting">
+  <div class="container">
+    <p class="label center fade-up">MESSAGE</p>
+    <h2 class="center-title fade-up" data-delay="1">代表挨拶</h2>
+    <div class="greeting-inner">
+      <div class="greeting-photo fade-up" data-delay="1">
+        <img src="assets/kishida.webp" alt="代表理事 岸田雄希">
+      </div>
+      <div class="greeting-body fade-up" data-delay="2">
+        <h3>「世界はすでに、あなたの中にある。」</h3>
+        <p>私たちが「世界人」という言葉を使うとき、それは海外に出ることや英語を話すことを意味するのではありません。自分自身と向き合い、得意なことを知り、他者を受け入れ、自然とともに生きること。そのすべてが「世界を広げる」ことだと信じています。</p>
+        <p>WCOは、そんな「世界人」としての生き方を、一人でも多くの人に届けるために生まれました。GLFFをはじめとするイベントや、日々のSNS発信、ワークショップを通じて、誰もがすでに世界の一員であるという気づきを広げていきます。</p>
+        <p>大きな変化は、小さな気づきから始まります。あなたの「世界」が広がることで、周りの誰かの世界も広がっていく。そんな循環を、一緒につくっていきましょう。</p>
+        <div class="greeting-sign">
+          <p>一般社団法人WCO　代表理事</p>
+          <b>岸田 雄希</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 事業内容 -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <p class="label center fade-up">BUSINESS</p>
+    <h2 class="center-title fade-up" data-delay="1">事業内容</h2>
+    <div class="business-grid">
+      <div class="business-card fade-up" data-delay="1">
+        <div class="business-icon">🌱</div>
+        <h3>情報発信・啓発</h3>
+        <p>SNSやウェブを通じて、「世界人」としての生き方や自然栽培・ナチュラルライフのヒントを日々発信します。</p>
+      </div>
+      <div class="business-card fade-up" data-delay="2">
+        <div class="business-icon">🌿</div>
+        <h3>Green Life Food Festa</h3>
+        <p>食・農・文化・アートを融合させたWCOの主要イベント。多くの人がつながり、未来のライフスタイルを体験できる場をつくります。</p>
+      </div>
+      <div class="business-card fade-up" data-delay="3">
+        <div class="business-icon">🌎</div>
+        <h3>グローバル人材育成</h3>
+        <p>ワークショップや国際交流を通じて、自分らしさを発見し世界を広げるプロセスをサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="org-cta">
+  <div class="container narrow">
+    <p class="label center fade-up" style="color:#e6c06a">JOIN US</p>
+    <h2 class="fade-up" data-delay="1">共に、世界を広げていきましょう。</h2>
+    <p class="fade-up" data-delay="2">WCOの活動に賛同し、共に歩んでいただける方を心よりお待ちしています。</p>
+    <a href="membership.html" class="btn primary fade-up" data-delay="3" style="display:inline-flex;margin:0 auto">会員について見る</a>
+  </div>
+</section>
+
+</main>
+<footer><div class="brand"><b>WCO</b><span>World Citizen Organisation</span></div><p>© WCO. All rights reserved.</p></footer>
+
+<script>
+function toggleMenu(){
+  const menu=document.querySelector('.side-menu');
+  const overlay=document.querySelector('.side-overlay');
+  const isOpen=menu.classList.toggle('open');
+  overlay.classList.toggle('open',isOpen);
+  document.body.style.overflow=isOpen?'hidden':'';
+}
+
+// Page loader
+(function(){
+  var MIN_MS=2000;
+  var start=Date.now();
+  function hideLoader(){
+    var elapsed=Date.now()-start;
+    var wait=Math.max(0,MIN_MS-elapsed);
+    setTimeout(function(){
+      var el=document.getElementById('loader');
+      if(el) el.classList.add('done');
+    },wait);
+  }
+  if(document.readyState==='complete'){
+    hideLoader();
+  } else {
+    window.addEventListener('load',hideLoader);
+  }
+})();
+
+// Scroll fade-in
+const fadeObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      fadeObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fadeObserver.observe(el));
+</script>
+</body></html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>会員について | 一般社団法人WCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.membership-hero{padding:160px 24px 96px;background:var(--cream);text-align:center;position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center;justify-content:center}
+.membership-hero-bg{position:absolute;inset:0;background:url("assets/membership-hero.jpg") center/cover no-repeat;z-index:0}
+.membership-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,248,232,.82) 0%,rgba(255,248,232,.92) 60%,rgba(255,248,232,1) 100%)}
+.membership-hero-content{position:relative;z-index:1}
+.membership-hero .eyebrow{margin-bottom:16px}
+.membership-hero h1{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;color:var(--green);font-size:52px;line-height:1.45;margin:0 0 24px}
+.membership-hero p{font-size:17px;font-weight:700;color:var(--muted);line-height:2;max-width:640px;margin:0 auto}
+@media(max-width:980px){.membership-hero h1{font-size:34px}}
+
+.plans{background:#fff}
+.plan-category{margin-top:64px}
+.plan-category-label{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.plan-category-label h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:22px;color:var(--green);margin:0}
+.plan-category-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.plan-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px}
+.plan-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.plan-card{background:var(--paper);border:1px solid var(--line);border-radius:32px;padding:36px 28px;text-align:center;box-shadow:var(--shadow);position:relative;transition:transform .3s,box-shadow .3s}
+.plan-card:hover{transform:translateY(-6px);box-shadow:0 24px 56px rgba(47,91,53,.16)}
+.plan-card.featured{background:var(--green);color:#fff;border-color:var(--green)}
+.plan-card.featured .plan-price,.plan-card.featured h3{color:#fff}
+.plan-card.featured .plan-feature{color:rgba(255,255,255,.88);border-color:rgba(255,255,255,.2)}
+.plan-card.bronze{border-top:4px solid #cd7f32}
+.plan-card.silver{border-top:4px solid #a0a0b0}
+.plan-card.gold{border-top:4px solid #c89c3f;background:linear-gradient(180deg,#fffdf0,#fff)}
+.plan-badge{display:inline-block;background:var(--orange);color:#fff;font-size:11px;font-weight:900;letter-spacing:.12em;padding:4px 14px;border-radius:999px;margin-bottom:16px}
+.plan-card h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:22px;color:var(--green);margin:0 0 12px}
+.plan-price{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:40px;font-weight:900;color:var(--green);line-height:1;margin:16px 0 4px}
+.plan-price span{font-size:15px;font-weight:700;vertical-align:middle}
+.plan-period{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:24px}
+.plan-features{list-style:none;padding:0;margin:0 0 28px;text-align:left}
+.plan-feature{font-size:13px;font-weight:700;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.plan-feature::before{content:"✓";color:var(--green2);font-weight:900;flex-shrink:0}
+.plan-card.featured .plan-feature::before{color:#a8d8a8}
+.plan-card.gold .plan-feature::before{color:#c89c3f}
+.plan-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;border-radius:999px;padding:13px;font-weight:900;font-size:14px;transition:opacity .2s}
+.plan-btn.dark{background:var(--green);color:#fff}
+.plan-btn.light{background:#fff;color:var(--green);border:2px solid var(--green)}
+.plan-btn.white{background:#fff;color:var(--green)}
+.plan-btn.gold-btn{background:#c89c3f;color:#fff}
+
+.benefits{background:var(--cream)}
+.benefit-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:52px}
+.benefit-item{flex:0 0 calc(33.33% - 16px);min-width:220px;max-width:320px}
+.benefit-item{background:#fff;border-radius:28px;padding:36px 28px;text-align:center;box-shadow:var(--shadow)}
+.benefit-icon{width:64px;height:64px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}
+.benefit-item h3{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:20px;color:var(--green);margin:0 0 12px}
+.benefit-item p{font-size:15px;color:var(--muted);font-weight:700;line-height:1.85;margin:0}
+
+.flow{background:#fff}
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.flow-steps::before{content:"";position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--green2),var(--green));opacity:.3}
+.flow-step{text-align:center;padding:0 16px}
+.flow-num{width:72px;height:72px;border-radius:50%;background:var(--mint);border:3px solid var(--green2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:24px;font-weight:900;color:var(--green);position:relative;z-index:1;background:#fff}
+.flow-step h3{font-size:16px;color:var(--green);font-weight:900;margin:0 0 8px}
+.flow-step p{font-size:15px;color:var(--muted);font-weight:700;line-height:1.8;margin:0}
+
+.faq{background:var(--cream)}
+.faq-list{max-width:760px;margin:48px auto 0;display:flex;flex-direction:column;gap:16px}
+.faq-item{background:#fff;border-radius:20px;padding:28px 32px;box-shadow:var(--shadow)}
+.faq-q{font-weight:900;color:var(--green);font-size:16px;margin:0 0 10px;display:flex;gap:12px}
+.faq-q::before{content:"Q.";color:var(--orange);font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:18px;flex-shrink:0}
+.faq-a{font-size:15px;color:var(--muted);font-weight:700;line-height:1.9;margin:0;padding-left:30px}
+
+.join-cta{background:linear-gradient(135deg,#1a5c10 0%,#357a24 100%);color:#fff;padding:96px 24px;text-align:center}
+.join-cta h2{color:#fff;font-size:38px;margin:0 0 20px}
+.join-cta p{color:rgba(255,255,255,.82);font-weight:700;line-height:2;max-width:560px;margin:0 auto 36px}
+
+@media(max-width:980px){
+  .membership-hero{padding:120px 20px 72px;min-height:400px}
+  .membership-hero h1{font-size:34px}
+  .membership-hero p{font-size:15px}
+  .plan-grid-2,.plan-grid-3{grid-template-columns:1fr}
+  .benefit-item{flex:0 0 calc(50% - 12px)}
+  .flow-steps{grid-template-columns:1fr 1fr;gap:32px}
+  .flow-steps::before{display:none}
+  .join-cta{padding:64px 20px}
+  .join-cta h2{font-size:26px}
+  .plan-category{margin-top:40px}
+}
+@media(max-width:620px){
+  .flow-steps{grid-template-columns:1fr;gap:24px}
+  .benefit-item{flex:0 0 100%}
+  .plan-card{padding:26px 20px}
+  .plan-price{font-size:32px}
+}
+@media(max-width:480px){
+  .membership-hero{padding:100px 16px 56px}
+  .membership-hero h1{font-size:26px;line-height:1.4}
+  .membership-hero p{font-size:14px}
+  .plan-price{font-size:28px}
+  .plan-card h3{font-size:18px}
+  .plan-card{padding:22px 16px}
+  .flow-num{width:56px;height:56px;font-size:18px}
+  .flow-step h3{font-size:14px}
+  .join-cta h2{font-size:22px}
+  .join-cta p{font-size:13px}
+  .faq-item{padding:20px 18px}
+  .faq-q{font-size:14px}
+  .faq-a{font-size:13px}
+  .benefit-item{padding:24px 18px}
+  .benefit-item h3{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header><div class="header-inner"><a class="brand" href="index.html"><b>WCO</b><span>World Citizen Organisation</span></a><nav><a href="index.html#about">WCOとは</a><a href="index.html#mvv">Vision/Mission</a><a href="index.html#actions">活動</a><a href="index.html#road100">Roadmap</a><a href="membership.html" style="color:var(--green);font-weight:900">Join</a><a href="organization.html">About us</a></nav><button class="menu-btn" aria-label="メニューを開く" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></header>
+<div class="side-overlay" onclick="toggleMenu()"></div>
+<aside class="side-menu">
+  <button class="side-close" aria-label="閉じる" onclick="toggleMenu()">✕</button>
+  <div class="side-brand"><b>WCO</b><span>World Citizen Organisation</span></div>
+  <nav class="side-nav">
+    <a href="index.html#about">WCOとは</a>
+    <a href="index.html#mvv">Vision / Mission</a>
+    <a href="index.html#actions">活動</a>
+    <a href="index.html#road100">Roadmap</a>
+    <a href="membership.html" class="side-active">会員について</a>
+    <a href="organization.html">About us</a>
+    <a href="membership.html" class="side-join-btn">Join us →</a>
+  </nav>
+</aside>
+
+<main>
+
+<section class="membership-hero">
+  <div class="membership-hero-bg"></div>
+  <div class="membership-hero-content">
+    <p class="eyebrow">MEMBERSHIP</p>
+    <h1>あなたも、世界人の輪へ。</h1>
+    <p>WCOへの参加は、自分の世界を広げる第一歩です。<br>一緒に学び、つながり、世界人としての生き方を実践していきましょう。</p>
+  </div>
+</section>
+
+<section class="section plans">
+  <div class="container">
+    <p class="label center">PLAN</p>
+    <h2 class="center-title">会員プラン</h2>
+    <p class="center-lead">あなたのペースで、世界を広げるプランを選んでください。</p>
+    <!-- 個人賛助会員 -->
+    <div class="plan-category">
+      <div class="plan-category-label"><h3>個人賛助会員</h3></div>
+      <div class="plan-grid-2">
+        <div class="plan-card">
+          <h3>サポーター</h3>
+          <div class="plan-price">¥500<span>/年</span></div>
+          <p class="plan-period">年会費 / 一口あたり<br><small style="color:var(--green2)">※一口以上の申込可</small></p>
+          <ul class="plan-features">
+            <li class="plan-feature">WCOニュースレター購読</li>
+            <li class="plan-feature">SNS・イベント情報の受け取り</li>
+            <li class="plan-feature">GLFFへの参加（一般価格）</li>
+          </ul>
+          <a href="#apply" class="plan-btn light">登録する</a>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-badge">おすすめ</div>
+          <h3>賛助会員</h3>
+          <div class="plan-price">¥1,000<span>/年</span></div>
+          <p class="plan-period">年会費 / 一口あたり<br><small style="color:var(--green2)">※一口以上の申込可</small></p>
+          <ul class="plan-features">
+            <li class="plan-feature">サポーターの全特典</li>
+            <li class="plan-feature">GLFFへの参加（会員優待価格）</li>
+            <li class="plan-feature">ワークショップへの優先参加</li>
+            <li class="plan-feature">WCO会員コミュニティへの参加</li>
+          </ul>
+          <a href="#apply" class="plan-btn white">登録する</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 法人賛助会員 -->
+    <div class="plan-category">
+      <div class="plan-category-label"><h3>法人賛助会員</h3></div>
+      <div class="plan-grid-3">
+        <div class="plan-card bronze">
+          <h3>ブロンズ会員</h3>
+          <div class="plan-price">¥50,000<span>/年</span></div>
+          <p class="plan-period">年会費 / 一口あたり<br><small style="color:var(--green2)">※一口以上の申込可</small></p>
+          <ul class="plan-features">
+            <li class="plan-feature">WCO活動報告書の送付</li>
+            <li class="plan-feature">GLFFへの招待（2名）</li>
+            <li class="plan-feature">WCO公式サイトへのロゴ掲載</li>
+          </ul>
+          <a href="#apply" class="plan-btn light">登録する</a>
+        </div>
+        <div class="plan-card silver">
+          <h3>シルバー会員</h3>
+          <div class="plan-price">¥100,000<span>/年</span></div>
+          <p class="plan-period">年会費 / 一口あたり<br><small style="color:var(--green2)">※一口以上の申込可</small></p>
+          <ul class="plan-features">
+            <li class="plan-feature">ブロンズの全特典</li>
+            <li class="plan-feature">GLFFへの招待（5名）</li>
+            <li class="plan-feature">GLFFスポンサーロゴ掲載</li>
+          </ul>
+          <a href="#apply" class="plan-btn light">登録する</a>
+        </div>
+        <div class="plan-card gold">
+          <div class="plan-badge">プレミアム</div>
+          <h3>ゴールド会員</h3>
+          <div class="plan-price">¥300,000<span>/年</span></div>
+          <p class="plan-period">年会費 / 一口あたり<br><small style="color:var(--green2)">※一口以上の申込可</small></p>
+          <ul class="plan-features">
+            <li class="plan-feature">シルバーの全特典</li>
+            <li class="plan-feature">GLFFへの招待（10名）</li>
+            <li class="plan-feature">GLFFメインスポンサー枠</li>
+            <li class="plan-feature">広報・メディアでの優先紹介</li>
+          </ul>
+          <a href="#apply" class="plan-btn gold-btn">登録する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section benefits">
+  <div class="container">
+    <p class="label center">BENEFITS</p>
+    <h2 class="center-title">会員になると、できること。</h2>
+    <div class="benefit-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">🌱</div>
+        <h3>仲間とつながる</h3>
+        <p>世界を広げたい仲間が集まるコミュニティに参加できます。世代・業界を超えた出会いが生まれます。</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🌿</div>
+        <h3>イベントへ優先参加</h3>
+        <p>GLFFや各種ワークショップに会員優待価格・優先予約で参加できます。</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🌎</div>
+        <h3>WCOの活動を支える</h3>
+        <p>会費はWCOの活動資金となります。世界人の輪を広げる取り組みを一緒に育てていただけます。</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🌸</div>
+        <h3>学びと気づきを得る</h3>
+        <p>定期的なニュースレターやワークショップを通じて、自分らしさや世界を広げるヒントを届けます。</p>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🏡</div>
+        <h3>共創プロジェクトに参加</h3>
+        <p>地域・学生・企業との共創企画に参加し、実際に世界を広げる活動を体験できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section flow">
+  <div class="container">
+    <p class="label center">HOW TO JOIN</p>
+    <h2 class="center-title">参加の流れ</h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h3>フォームに入力</h3>
+        <p>お名前・メールアドレス・プランを選択してお申し込みください。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h3>確認メールを受け取る</h3>
+        <p>登録後、確認メールをお送りします。内容をご確認ください。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h3>会費のお支払い</h3>
+        <p>正会員・賛助会員の方は、案内に従って年会費をお支払いください。</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h3>コミュニティへ参加</h3>
+        <p>手続き完了後、WCO会員コミュニティへご招待します。ようこそ！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="apply">
+  <div class="container">
+    <p class="label center">FAQ</p>
+    <h2 class="center-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">年齢や国籍の制限はありますか？</p>
+        <p class="faq-a">制限はありません。世界を広げたい気持ちがあれば、どなたでもご参加いただけます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">途中で退会することはできますか？</p>
+        <p class="faq-a">いつでも退会いただけます。年会費の返金はございませんが、残り期間は特典をご利用いただけます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">法人での参加は可能ですか？</p>
+        <p class="faq-a">賛助会員として法人での参加が可能です。ご希望の方はお問い合わせください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="join-cta">
+  <div class="container narrow">
+    <p class="label center" style="color:#e6c06a">JOIN US</p>
+    <h2>自分らしく、共に歩んでいきましょう。</h2>
+    <p>私たちも世界を広げている途中です。一緒に歩んでいただける方を、心よりお待ちしています。</p>
+    <a href="#" class="btn primary" style="margin:0 auto">WCOに参加する</a>
+  </div>
+</section>
+
+</main>
+<footer><div class="brand"><b>WCO</b><span>World Citizen Organisation</span></div><p>© WCO. All rights reserved.</p></footer>
+<script>
+function toggleMenu(){
+  const menu=document.querySelector('.side-menu');
+  const overlay=document.querySelector('.side-overlay');
+  const isOpen=menu.classList.toggle('open');
+  overlay.classList.toggle('open',isOpen);
+  document.body.style.overflow=isOpen?'hidden':'';
+}
+</script>
+</body>
+</html>
