@@ -24,7 +24,7 @@
 .plan-category-label::after{content:"";flex:1;height:1px;background:var(--line)}
 .plan-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px}
 .plan-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.plan-card{background:var(--paper);border:1px solid var(--line);border-radius:32px;padding:36px 28px;text-align:center;box-shadow:var(--shadow);position:relative;transition:transform .3s,box-shadow .3s}
+.plan-card{background:var(--paper);border:1px solid var(--line);border-radius:32px;padding:36px 28px;text-align:center;box-shadow:var(--shadow);position:relative;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
 .plan-card:hover{transform:translateY(-6px);box-shadow:0 24px 56px rgba(47,91,53,.16)}
 .plan-card.featured{background:var(--green);color:#fff;border-color:var(--green)}
 .plan-card.featured .plan-price,.plan-card.featured h3{color:#fff}
@@ -37,7 +37,7 @@
 .plan-price{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-size:40px;font-weight:900;color:var(--green);line-height:1;margin:16px 0 4px}
 .plan-price span{font-size:15px;font-weight:700;vertical-align:middle}
 .plan-period{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:24px}
-.plan-features{list-style:none;padding:0;margin:0 0 28px;text-align:left}
+.plan-features{list-style:none;padding:0;margin:0 0 28px;text-align:left;flex:1}
 .plan-feature{font-size:13px;font-weight:700;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
 .plan-feature::before{content:"✓";color:var(--green2);font-weight:900;flex-shrink:0}
 .plan-card.featured .plan-feature::before{color:#a8d8a8}
